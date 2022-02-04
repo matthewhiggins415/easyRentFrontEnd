@@ -6,47 +6,42 @@ const DIV = styled.div`
   width: auto;
   padding: 10px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  border-bottom: 1px solid black;
+  flexDirection: row;
+  justifyContent: space-evenly;
+  borderBottom: 1px solid black;
 `
 const NavContainer = styled.div`
   width: 300px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-`
-
-const H1 = styled.h1`
-  padding: 10px;
-  text-align: center;
+  flexDirection: row;
+  alignItems: center;
+  justifyContent: space-evenly;
 `
 
 const linkStyle = {
   color: "white",
   underline: "none", 
-  "text-decoration": "none",
-  "background-color": "black", 
+  "textDecoration": "none",
+  "backgroundColor": "black", 
   padding: "12px", 
-  "border-radius": "10px"
+  "borderRadius": "10px"
 }
 
 const logoLink = {
   color: "black",
-  "font-size": "20px",
+  "fontSize": "20px",
   underline: "none", 
-  "text-decoration": "none",
+  "textDecoration": "none",
   padding: "12px", 
-  "border-radius": "10px"
+  "borderRadius": "10px"
 }
 
-const authenticatedOptions = (
-  <NavContainer>
-    <Link style={linkStyle} to='/change-password' >Change Password</Link>
-    <Link to='/sign-out' >Sign Out</Link>
-  </NavContainer>
-)
+// const authenticatedOptions = (
+//   <NavContainer>
+//     <Link style={linkStyle} to='/change-password' >Change Password</Link>
+//     <Link to='/sign-out' >Sign Out</Link>
+//   </NavContainer>
+// )
 
 const unauthenticatedOptions = (
   <NavContainer>

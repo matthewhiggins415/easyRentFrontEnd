@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
+// import { Navigate } from 'react-router-dom'
+
 import styled from 'styled-components'
+import { signUp, signIn } from '../../api/auth'
 
 const DIV = styled.div`
   width: 400px;
@@ -35,24 +38,47 @@ const BUTTON = styled.button`
   cursor: pointer;
 `
 
-const Register = () => {
+const Register = ({ setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
   const onRegister = async (event) => {
     event.preventDefault()
-    try {
 
+    try {
+      await signUp(email, password, confirmPassword)
+      const res = await signIn(email, password)
+      setUser(res.data.user)
+      // msgAlert({
+      //   heading: 'Sign Up Success',
+      //   message: signUpSuccess,
+      //   variant: 'success'
+      // })
+      // setShouldNavigate(true)
     } catch (error) {
-      
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      console.log(`error: ${error}`)
+      // msgAlert({
+      //   heading: 'Sign Up Failed with error: ' + error.message,
+      //   message: signUpFailure,
+      //   variant: 'danger'
+      // })
     }
   }
+
+
+  // if (shouldNavigate) {
+  //   return <Navigate to='/' />
+  // }
+
 
   return (
     <DIV>
       <h1>Register</h1>
-      <FORM onSubmit={}>
+      <FORM onSubmit={ onRegister }>
         <INPUT 
           placeholder="email" 
           type="email"
@@ -77,7 +103,7 @@ const Register = () => {
           onChange={event => setConfirmPassword(event.target.value)}
           required
         />
-        <BUTTON>Sign Up</BUTTON>
+        <BUTTON type="submit">Sign Up</BUTTON>
       </FORM>
     </DIV>
   )

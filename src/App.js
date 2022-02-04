@@ -9,14 +9,14 @@ import Landing from './components/Views/Landing.js'
 
 const App = () => {
   const [user, setUser] = useState({})
-  const [messageAlerts, setMessageAlerts] = useState([]) 
-  
+  // const [messageAlerts, setMessageAlerts] = useState([]) 
+
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </>
