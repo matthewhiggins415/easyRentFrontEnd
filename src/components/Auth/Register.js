@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const DIV = styled.div`
@@ -36,17 +36,51 @@ const BUTTON = styled.button`
 `
 
 const Register = () => {
- return (
-   <DIV>
-    <h1>Register</h1>
-    <FORM>
-        <INPUT placeholder="email"/>
-        <INPUT placeholder="password"/>
-        <INPUT placeholder="confirm password"/>
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  const onRegister = async (event) => {
+    event.preventDefault()
+    try {
+
+    } catch (error) {
+      
+    }
+  }
+
+  return (
+    <DIV>
+      <h1>Register</h1>
+      <FORM onSubmit={}>
+        <INPUT 
+          placeholder="email" 
+          type="email"
+          name="email"
+          value={email}
+          onChange={event => setEmail(event.target.value)}
+          required
+        />
+        <INPUT 
+          placeholder="password" 
+          type="password"
+          name="password"
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+          required
+        />
+        <INPUT 
+          placeholder="confirm password" 
+          type="password"
+          name="confirmPassword"
+          value={confirmPassword}
+          onChange={event => setConfirmPassword(event.target.value)}
+          required
+        />
         <BUTTON>Sign Up</BUTTON>
-    </FORM>
-   </DIV>
- )
+      </FORM>
+    </DIV>
+  )
 }
 
 export default Register 

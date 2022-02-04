@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const DIV = styled.div`
@@ -35,6 +35,9 @@ const BUTTON = styled.button`
 `
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
     <DIV>
       <h1>Login</h1>

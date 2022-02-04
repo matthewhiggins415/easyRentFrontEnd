@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header/Header'
@@ -8,6 +8,9 @@ import Landing from './components/Views/Landing.js'
 
 
 const App = () => {
+  const [user, setUser] = useState({})
+  const [messageAlerts, setMessageAlerts] = useState([]) 
+  
   return (
     <>
       <Header />
