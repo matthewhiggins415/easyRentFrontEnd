@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const DIV = styled.div`
@@ -32,24 +32,33 @@ const linkStyle = {
   "border-radius": "10px"
 }
 
+const logoLink = {
+  color: "black",
+  "font-size": "20px",
+  underline: "none", 
+  "text-decoration": "none",
+  padding: "12px", 
+  "border-radius": "10px"
+}
+
 const authenticatedOptions = (
   <NavContainer>
-    <NavLink style={linkStyle} to='/change-password' >Change Password</NavLink>
-    <NavLink to='/sign-out' >Sign Out</NavLink>
+    <Link style={linkStyle} to='/change-password' >Change Password</Link>
+    <Link to='/sign-out' >Sign Out</Link>
   </NavContainer>
 )
 
 const unauthenticatedOptions = (
   <NavContainer>
-    <NavLink style={linkStyle} to='/sign-up'>Sign Up</NavLink>
-    <NavLink style={linkStyle} to='/sign-in'>Sign In</NavLink>
+    <Link style={linkStyle} to='/register'>Register</Link>
+    <Link style={linkStyle} to='/login'>Login</Link>
   </NavContainer>
 )
 
 const Header = () => {
   return (
     <DIV>
-      <H1>easyRent</H1>
+      <Link style={logoLink} to="/">easyRent</Link>
       {unauthenticatedOptions}
     </DIV>
   )
