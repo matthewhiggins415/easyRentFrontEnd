@@ -6,16 +6,17 @@ const DIV = styled.div`
   width: auto;
   padding: 10px;
   display: flex;
-  flexDirection: row;
-  justifyContent: space-evenly;
-  borderBottom: 1px solid black;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 1px solid black;
 `
 const NavContainer = styled.div`
-  width: 300px;
+  margin: 10px;
+  width: 50%;
   display: flex;
-  flexDirection: row;
-  alignItems: center;
-  justifyContent: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 `
 
 const linkStyle = {
@@ -53,7 +54,9 @@ const unauthenticatedOptions = (
 const Header = () => {
   return (
     <DIV>
-      <Link style={logoLink} to="/">easyRent</Link>
+      <NavContainer>
+        <Link style={logoLink} to="/">easyRent</Link>
+      </NavContainer>
       {unauthenticatedOptions}
     </DIV>
   )

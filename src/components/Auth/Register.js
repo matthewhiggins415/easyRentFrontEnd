@@ -49,6 +49,7 @@ const Register = ({ setUser }) => {
     try {
       await signUp(email, password, confirmPassword)
       const res = await signIn(email, password)
+      console.log(res)
       setUser(res.data.user)
       // msgAlert({
       //   heading: 'Sign Up Success',
