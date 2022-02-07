@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { signIn } from '../../api/auth'
@@ -38,18 +39,24 @@ const BUTTON = styled.button`
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [shouldNavigate, setShouldNavigate] = useState(false)
 
-  const onSignIn = async () => {
-    e.preventDefault()
+  const onSignIn = async (event) => {
+    event.preventDefault()
     try {
       const res = await signIn(email, password)
       console.log(res)
       setUser(res.data.user)    
-    } catch (e) {
+      setShouldNavigate(true)
+    } catch (error) {
       setEmail('')
       setPassword('')
       console.log(`error: ${error}`)
     }
+  }
+
+  if (shouldNavigate) {
+    return <Navigate to='/home' />
   }
 
   return (

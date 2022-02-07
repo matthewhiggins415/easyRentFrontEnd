@@ -37,12 +37,12 @@ const logoLink = {
   "borderRadius": "10px"
 }
 
-// const authenticatedOptions = (
-//   <NavContainer>
-//     <Link style={linkStyle} to='/change-password' >Change Password</Link>
-//     <Link to='/sign-out' >Sign Out</Link>
-//   </NavContainer>
-// )
+const authenticatedOptions = (
+  <NavContainer>
+    <Link style={linkStyle} to='/change-password' >Change Password</Link>
+    <Link to='/sign-out' >Sign Out</Link>
+  </NavContainer>
+)
 
 const unauthenticatedOptions = (
   <NavContainer>
@@ -51,13 +51,13 @@ const unauthenticatedOptions = (
   </NavContainer>
 )
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <DIV>
       <NavContainer>
         <Link style={logoLink} to="/">easyRent</Link>
       </NavContainer>
-      {unauthenticatedOptions}
+      {user ? authenticatedOptions : unauthenticatedOptions}
     </DIV>
   )
 }

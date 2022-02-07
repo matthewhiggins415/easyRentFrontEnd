@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 import styled from 'styled-components'
 import { signUp, signIn } from '../../api/auth'
@@ -42,6 +42,7 @@ const Register = ({ setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [shouldNavigate, setShouldNavigate] = useState(false)
 
   const onRegister = async (event) => {
     event.preventDefault()
@@ -56,7 +57,7 @@ const Register = ({ setUser }) => {
       //   message: signUpSuccess,
       //   variant: 'success'
       // })
-      // setShouldNavigate(true)
+      setShouldNavigate(true)
     } catch (error) {
       setEmail('')
       setPassword('')
@@ -71,9 +72,9 @@ const Register = ({ setUser }) => {
   }
 
 
-  // if (shouldNavigate) {
-  //   return <Navigate to='/' />
-  // }
+  if (shouldNavigate) {
+    return <Navigate to='/home' />
+  }
 
 
   return (
