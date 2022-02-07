@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { signIn } from '../../api/auth'
 
 const DIV = styled.div`
   width: 400px;
@@ -34,17 +35,42 @@ const BUTTON = styled.button`
   cursor: pointer;
 `
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const onSignIn = async () => {
+    e.preventDefault()
+    try {
+      const res = await signIn(email, password)
+      console.log(res)
+      setUser(res.data.user)    
+    } catch (e) {
+      setEmail('')
+      setPassword('')
+      console.log(`error: ${error}`)
+    }
+  }
 
   return (
     <DIV>
       <h1>Login</h1>
-      <FORM>
-        <INPUT placeholder="email"></INPUT>
-        <INPUT placeholder="password"></INPUT>
-        <BUTTON>Login</BUTTON>
+      <FORM onSubmit={onSignIn}>
+        <INPUT 
+          placeholder="email" 
+          value={email} 
+          onChange={event => setEmail(event.target.value)} 
+          name="email" 
+          required>
+        </INPUT>
+        <INPUT 
+          placeholder="password" 
+          value={password} 
+          onChange={event => setPassword(event.target.value)} 
+          name="password" 
+          required>
+        </INPUT>
+        <BUTTON type="submit">Login</BUTTON>
       </FORM>
     </DIV>
   )
