@@ -39,8 +39,7 @@ const logoLink = {
 
 const authenticatedOptions = (
   <NavContainer>
-    <Link style={linkStyle} to='/change-password' >Change Password</Link>
-    <Link to='/sign-out' >Sign Out</Link>
+    <Link style={linkStyle} to='/sign-out' >Sign Out</Link>
   </NavContainer>
 )
 

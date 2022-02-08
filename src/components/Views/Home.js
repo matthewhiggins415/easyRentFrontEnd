@@ -1,8 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
+import SideNavBar from '../Header/SideNavBar'
+
+const DIV = styled.div`
+  display: flex;
+  width: 100%;
+  background-color: red;
+  align-items: center;
+  justify-content: center;
+`
 
 const Home = () => {
   return (
-    <h1>Home</h1>
+    <>
+    <SideNavBar />
+    <DIV>
+      <p>Home</p>
+    </DIV>
+    </>
   )
 }
 
