@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const DIV = styled.div`
-  width: auto;
+  width: 98vw;
+  height: 10vh;
   padding: 10px;
   display: flex;
+  margin: 0 auto;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid black;
 `
 const NavContainer = styled.div`
   margin: 10px;
-  width: 50%;
+  width: 25%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -38,9 +41,7 @@ const logoLink = {
 }
 
 const authenticatedOptions = (
-  <NavContainer>
     <Link style={linkStyle} to='/sign-out' >Sign Out</Link>
-  </NavContainer>
 )
 
 const unauthenticatedOptions = (
@@ -53,9 +54,7 @@ const unauthenticatedOptions = (
 const Header = ({ user }) => {
   return (
     <DIV>
-      <NavContainer>
-        <Link style={logoLink} to="/">easyRent</Link>
-      </NavContainer>
+      <Link style={logoLink} to="/">easyRent</Link>
       {user ? authenticatedOptions : unauthenticatedOptions}
     </DIV>
   )

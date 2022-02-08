@@ -68,6 +68,7 @@ const Login = ({ setUser }) => {
           value={email} 
           onChange={event => setEmail(event.target.value)} 
           name="email" 
+          type="email"
           required>
         </INPUT>
         <INPUT 
@@ -75,6 +76,7 @@ const Login = ({ setUser }) => {
           value={password} 
           onChange={event => setPassword(event.target.value)} 
           name="password" 
+          type="password"
           required>
         </INPUT>
         <BUTTON type="submit">Login</BUTTON>
