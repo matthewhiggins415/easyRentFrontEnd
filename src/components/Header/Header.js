@@ -7,7 +7,7 @@ const DIV = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-bottom: 1px solid black;
 `
 const NavContainer = styled.div`
