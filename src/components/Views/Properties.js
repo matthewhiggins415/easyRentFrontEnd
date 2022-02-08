@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { getAllProperties } from '../../api/properties'
-import PropertyItem from '../Random/PropertyItems'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { Navigate } from 'react-router'
 
 const Container = styled.div`
     width: 100%;
@@ -61,16 +62,30 @@ const Properties = ({ user }) => {
       console.log('properties:', properties)
     }, [])
 
+    if (!user) {
+      return <Navigate to='/' />
+    }
+
+    const deleteItem = () => {
+      console.log('remove item')
+    }
+
+    const propDetails = (id) => {
+      console.log('property details')
+      return <Navigate to={`/property/${id}`} />
+    }
+    
+
     const propertyJsx = properties.map((property, index) => (
         <PropertyContainer key={property._id}>
           <InfoContainer>
             <h6>{index + 1}.</h6>
             <h6>{property.address}</h6>
           </InfoContainer>
-          <div>
-            <Button onClick={() => { console.log('remove item') }}>•••</Button>
-            <Button onClick={() => { console.log('remove item') }}>❌</Button>
-          </div>
+            <div>
+              <Link to={`/property/${property._id}`}>•••</Link>
+              <Button onClick={() => deleteItem()}>❌</Button>
+            </div>
         </PropertyContainer>
     ))
 
@@ -78,7 +93,7 @@ const Properties = ({ user }) => {
         <Container>
           <ContainerHeader>
           <h1>Properties</h1>
-          <Button>Add ➕</Button>
+          <Button> ➕ </Button>
           </ContainerHeader>
           {propertyJsx}
         </Container>
