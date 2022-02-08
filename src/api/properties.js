@@ -20,7 +20,7 @@ export const getAProperty = user => {
 }
 
 // Read all props (of a single user)
-export const getAllProperties = user => {
+export const getAllProperties = (user) => {
     return axios.get(apiUrl + '/property/', {
       headers: {
         Authorization: `Bearer ${user.token}`

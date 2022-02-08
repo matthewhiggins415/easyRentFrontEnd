@@ -40,7 +40,7 @@ const App = () => {
         <Route path="/sign-out" element={<SignOut clearUser={clearUser} user={user}/>} exact/>
         <Route path="/home" element={<Home />} exact/>
         <Route path="/profile" element={<Profile />} exact/>
-        <Route path="/properties" element={<Properties />} exact/>
+        <Route path="/properties" element={<Properties user={user}/>} exact/>
       </Routes>
       </Container>
     </AppContainer>
