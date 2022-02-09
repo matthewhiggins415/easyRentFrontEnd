@@ -47,6 +47,14 @@ const InfoContainer = styled.div`
   height: auto;
 `
 
+const linkStyle = {
+    color: "black",
+    underline: "none", 
+    "textDecoration": "none",
+    "backgroundColor": "white", 
+    'padding': "12px"
+}  
+
 const Properties = ({ user }) => {
     const [properties, setProperties] = useState([])
 
@@ -74,7 +82,6 @@ const Properties = ({ user }) => {
       console.log('property details')
       return <Navigate to={`/property/${id}`} />
     }
-    
 
     const propertyJsx = properties.map((property, index) => (
         <PropertyContainer key={property._id}>
@@ -83,20 +90,19 @@ const Properties = ({ user }) => {
             <h6>{property.address}</h6>
           </InfoContainer>
             <div>
-              <Link to={`/property/${property._id}`}>•••</Link>
-              <Button onClick={() => deleteItem()}>❌</Button>
+              <Link style={linkStyle} to={`/property/${property._id}`}>•••</Link>
             </div>
         </PropertyContainer>
     ))
 
     return (
-        <Container>
-          <ContainerHeader>
+      <Container>
+        <ContainerHeader>
           <h1>Properties</h1>
           <Button> ➕ </Button>
-          </ContainerHeader>
-          {propertyJsx}
-        </Container>
+        </ContainerHeader>
+        {propertyJsx}
+      </Container>
     )
 }
 
