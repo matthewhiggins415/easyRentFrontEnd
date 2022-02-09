@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import SideNavBar from './components/Header/SideNavBar'
 import Properties from './components/Views/Properties'
 import PropertyDetails from './components/Views/PropertyDetails'
+import PropertyEdit from './components/Views/PropertyEdit'
 
 const AppContainer = styled.div`
   display: flex;
@@ -43,6 +44,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} exact/>
         <Route path="/properties" element={<Properties user={user}/>} exact/>
         <Route path="/property/:id" element={<PropertyDetails user={user}/>} exact/>
+        <Route path="/editproperty/:id" element={<PropertyEdit user={user}/>} exact/>
       </Routes>
       </Container>
     </AppContainer>

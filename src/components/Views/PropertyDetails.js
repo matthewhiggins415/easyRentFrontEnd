@@ -36,7 +36,11 @@ const Header = styled.div`
 `
 
 const LinkStyle = {
-  
+  color: "black",
+  underline: "none", 
+  "textDecoration": "none",
+  "backgroundColor": "white", 
+  'padding': "12px"
 }
 
 const PropertyDetails = ({ user }) => {
@@ -60,7 +64,7 @@ const PropertyDetails = ({ user }) => {
       <Header>
         <h1>Property Details</h1>
         <ButtonContainer>
-          <Button>📝</Button>
+          <Link style={linkStyle} to={`/editproperty/${id}`}>📝</Link>
           <Button>❌</Button>
         </ButtonContainer>
       </Header>
