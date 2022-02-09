@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router'
 import { Navigate } from 'react-router'
+import { Link } from 'react-router-dom'
+import { getAProperty } from '../../api/properties'
 
 const Container = styled.div`
   display: flex;
@@ -49,7 +51,13 @@ const PropertyDetails = ({ user }) => {
 
   useEffect(() => {
     console.log(id)
-  })
+    const retrieveProperty = async (user, id) => {
+      let prop = await getAProperty(user, id)
+      console.log(prop)
+    }
+
+    retrieveProperty(user, id)
+  }, [])
 
   if (!user) {
     return <Navigate to='/' />
@@ -64,7 +72,7 @@ const PropertyDetails = ({ user }) => {
       <Header>
         <h1>Property Details</h1>
         <ButtonContainer>
-          <Link style={linkStyle} to={`/editproperty/${id}`}>📝</Link>
+          <Link style={LinkStyle} to={`/editproperty/${id}`}>📝</Link>
           <Button>❌</Button>
         </ButtonContainer>
       </Header>

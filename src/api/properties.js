@@ -11,8 +11,8 @@ export const createAProperty = user => {
 }
 
 // Read a prop
-export const getAProperty = user => {
-    return axios.get(apiUrl + '/property/:id', {
+export const getAProperty = (user, id) => {
+    return axios.get(apiUrl + `/property/${id}`, {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
