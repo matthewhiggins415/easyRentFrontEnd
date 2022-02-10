@@ -18,7 +18,7 @@ const Button = styled.button`
   height: 50%; 
   background-color: white;
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   outline: none;
   border: none;
   cursor: pointer; 
@@ -34,7 +34,11 @@ const Header = styled.div`
   width: 90%;
   justify-content: space-between;
   align-items: center;
-  background-color: lightblue;
+`
+
+const InfoContainer = styled.div`
+  width: 90%;
+  height: 25%;
 `
 
 const LinkStyle = {
@@ -42,7 +46,9 @@ const LinkStyle = {
   underline: "none", 
   "textDecoration": "none",
   "backgroundColor": "white", 
-  'padding': "12px"
+  'padding': "10px",
+  height: "50%", 
+  "text-align": "center"
 }
 
 const PropertyDetails = ({ user }) => {
@@ -52,8 +58,10 @@ const PropertyDetails = ({ user }) => {
   useEffect(() => {
     console.log(id)
     const retrieveProperty = async (user, id) => {
-      let prop = await getAProperty(user, id)
-      console.log(prop)
+      let res = await getAProperty(user, id)
+      let propertyData = res.data.property
+      console.log(propertyData)
+      setProperty(propertyData)
     }
 
     retrieveProperty(user, id)
@@ -62,10 +70,6 @@ const PropertyDetails = ({ user }) => {
   if (!user) {
     return <Navigate to='/' />
   }
-
-  const propertyJsx = () => (
-    <p></p>
-  )
 
   return (
     <Container>
@@ -76,9 +80,18 @@ const PropertyDetails = ({ user }) => {
           <Button>❌</Button>
         </ButtonContainer>
       </Header>
-      <div>
-        <p>property item</p>
-      </div>
+      <InfoContainer>
+        <p>{property.address}</p>
+        <p>Rents Due: {property.DayRentDue}</p>
+        <p>Units: {property.numOfUnits}</p>
+        <p>total Rent: {property.totalRent}</p>
+      </InfoContainer>
+      <InfoContainer>
+        <p>Tasks</p>
+      </InfoContainer>
+      <InfoContainer>
+        <p>Tenants</p>
+      </InfoContainer>
     </Container>
   )
 }
