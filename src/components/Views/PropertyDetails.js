@@ -76,7 +76,7 @@ const PropertyDetails = ({ user }) => {
       <Header>
         <h1>Property Details</h1>
         <ButtonContainer>
-          <Link style={LinkStyle} to={`/editproperty/${id}`}>📝</Link>
+          <Link style={LinkStyle} to={`/editproperty/${id}`}>edit</Link>
           <Button>❌</Button>
         </ButtonContainer>
       </Header>

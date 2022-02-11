@@ -1,9 +1,20 @@
 import React from 'react'
 
-const Profile = () => {
+const Profile = ({ user }) => {
     return (
       <>
-        <h1>profile</h1>
+        <div>
+          <img/>
+          <div>
+            <h1>FULL NAME</h1>
+          </div>
+          <div>
+            <h6>Contact Info</h6>
+            <p>address</p>
+            <p>email</p>
+            <p>phone number</p>
+          </div>
+        </div>
       </>
     )
 }
