@@ -38,8 +38,12 @@ export const deleteAProperty = user => {
 }
 
 // Edit a prop 
-export const editAProperty = user => {
-    return axios.patch(apiUrl + '/property/:id', {
+export const editAProperty = (user, id, formData) => {
+    return axios.patch(apiUrl + `/property/${id}`, 
+    {
+      property: formData
+    },
+    {
       headers: {
         Authorization: `Bearer ${user.token}`
       }

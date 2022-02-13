@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { getAProperty } from '../../api/properties'
+import { getAProperty, editAProperty } from '../../api/properties'
 import styled from 'styled-components'
+import { Navigate } from 'react-router'
+
 
 const Container = styled.div`
   width: 100%;
@@ -63,19 +64,42 @@ const SubmitBtn = styled.button`
 
 const PropertyEdit = ({ user }) => {
   const { id } = useParams()
+  const [shouldNavigate, setShouldNavigate] = useState(false)
   const [property, setProperty] = useState({})
 
   useEffect(() => {
-    console.log(id)
     const retrieveProperty = async (user, id) => {
       let res = await getAProperty(user, id)
       let propertyData = res.data.property
-      console.log(propertyData)
       setProperty(propertyData)
     }
 
     retrieveProperty(user, id)
-  })
+  }, [])
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      let formData = {
+        address: property.address, 
+        numOfUnits: property.numOfUnits, 
+        totalRent: property.totalRent, 
+        DayRentDue: property.DayRentDue
+      }
+
+      console.log(formData)
+      const res = await editAProperty(user, id, formData)
+      console.log(res)
+      setShouldNavigate(true)
+    } catch(error) {
+      console.error()
+    }
+  }
+
+  if (shouldNavigate) {
+    return <Navigate to={`/property/${id}`} /> 
+  }
 
   return (
     <Container>
@@ -83,22 +107,42 @@ const PropertyEdit = ({ user }) => {
         <h1>Edit Property</h1>
         <Link style={linkStyle} to={`/property/${id}`}>❌</Link>
       </ContainerHeader>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <InputGroup>
           <label>Address:</label>
-          <Input placeholder={`${property.address}`} />
+          <Input 
+            placeholder={`${property.address}`} 
+            onChange={e => setProperty({...property, address: e.target.value})}
+            name="address"
+            required
+          />
         </InputGroup>
         <InputGroup>
           <label>Rent Due:</label>
-          <Input placeholder={`${property.DayRentDue}`} />
+          <Input 
+            placeholder={`${property.DayRentDue}`} 
+            onChange={e => setProperty({...property, DayRentDue: e.target.value})}
+            name="DayRentDue"
+            required
+          />
         </InputGroup>
         <InputGroup>
           <label>Number of Units:</label>
-          <Input placeholder={`${property.numOfUnits}`} />
+          <Input 
+            placeholder={`${property.numOfUnits}`} 
+            onChange={e => setProperty({...property, numOfUnits: e.target.value})}
+            name="numOfUnits"
+            required
+          />
         </InputGroup>
         <InputGroup>
           <label>Total Rent:</label>
-          <Input placeholder={`${property.totalRent}`} />
+          <Input 
+            placeholder={`${property.totalRent}`} 
+            onChange={e => setProperty({...property, totalRent: e.target.value})}
+            name="totalRent"
+            required
+          />
         </InputGroup>
         <SubmitBtn type="submit">Submit</SubmitBtn>
       </Form>
