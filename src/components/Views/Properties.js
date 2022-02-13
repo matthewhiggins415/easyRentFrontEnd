@@ -62,24 +62,16 @@ const Properties = ({ user }) => {
       const getUsersProperties = async (user) => {
         let propertiesReq = await getAllProperties(user)
         let propertiesObject = propertiesReq.data.properties
-        console.log(typeof propertiesObject)
-        console.log(propertiesObject)
         setProperties(propertiesObject)
       }
       getUsersProperties(user)        
-      console.log('properties:', properties)
     }, [])
 
     if (!user) {
       return <Navigate to='/' />
     }
 
-    const deleteItem = () => {
-      console.log('remove item')
-    }
-
     const propDetails = (id) => {
-      console.log('property details')
       return <Navigate to={`/property/${id}`} />
     }
 

@@ -45,13 +45,11 @@ const Login = ({ setUser }) => {
     event.preventDefault()
     try {
       const res = await signIn(email, password)
-      console.log(res)
       setUser(res.data.user)    
       setShouldNavigate(true)
     } catch (error) {
       setEmail('')
       setPassword('')
-      console.log(`error: ${error}`)
     }
   }
 

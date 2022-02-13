@@ -54,13 +54,12 @@ const LinkStyle = {
 const PropertyDetails = ({ user }) => {
   const { id } = useParams()
   const [property, setProperty] = useState({})
+  const [deleteClicked, setDeleteClicked] = useState(false)
 
   useEffect(() => {
-    console.log(id)
     const retrieveProperty = async (user, id) => {
       let res = await getAProperty(user, id)
       let propertyData = res.data.property
-      console.log(propertyData)
       setProperty(propertyData)
     }
 
@@ -71,13 +70,18 @@ const PropertyDetails = ({ user }) => {
     return <Navigate to='/' />
   }
 
+  const onDeleteClicked = () => {
+    // setDeleteClicked(true)
+    console.log('clicked')
+  }
+
   return (
     <Container>
       <Header>
         <h1>Property Details</h1>
         <ButtonContainer>
           <Link style={LinkStyle} to={`/editproperty/${id}`}>edit</Link>
-          <Button>❌</Button>
+          <Button onClick={onDeleteClicked}>❌</Button>
         </ButtonContainer>
       </Header>
       <InfoContainer>
@@ -95,5 +99,6 @@ const PropertyDetails = ({ user }) => {
     </Container>
   )
 }
+
 
 export default PropertyDetails

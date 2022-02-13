@@ -50,7 +50,6 @@ const Register = ({ setUser }) => {
     try {
       await signUp(email, password, confirmPassword)
       const res = await signIn(email, password)
-      console.log(res)
       setUser(res.data.user)
       // msgAlert({
       //   heading: 'Sign Up Success',
@@ -62,7 +61,6 @@ const Register = ({ setUser }) => {
       setEmail('')
       setPassword('')
       setConfirmPassword('')
-      console.log(`error: ${error}`)
       // msgAlert({
       //   heading: 'Sign Up Failed with error: ' + error.message,
       //   message: signUpFailure,
