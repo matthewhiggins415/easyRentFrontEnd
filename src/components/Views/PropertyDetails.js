@@ -12,6 +12,7 @@ const Container = styled.div`
   align-items: center;
   width: 100%; 
   height: auto;
+  overflow: scroll;
 `
 
 const Button = styled.button`
@@ -40,6 +41,12 @@ const Header = styled.div`
 const InfoContainer = styled.div`
   width: 90%;
   height: 25%;
+`
+
+const TenantListContainer = styled.div`
+  width: 90%;
+  height: auto;
+  margin: 3rem auto;
 `
 
 const LinkStyle = {
@@ -80,10 +87,13 @@ const ConfirmButtons = styled.button`
 `
 
 const TenantContainer = styled.div`
+  margin: 6px auto;
   display: flex;
   border: 1px solid black;
   width: 100%;
   justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
 `
 
 const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
@@ -103,12 +113,12 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
     <p>total Rent: {property.totalRent}</p>
   </InfoContainer>
   <InfoContainer>
-    <p>Tasks</p>
+    <h2>Tasks</h2>
   </InfoContainer>
-  <InfoContainer>
-    <p>Tenants</p>
+  <TenantListContainer>
+    <h2>Tenants</h2>
     {tenantJsx}
-  </InfoContainer>
+  </TenantListContainer>
   </>
   )
 }
@@ -191,6 +201,5 @@ const PropertyDetails = ({ user }) => {
     </Container>
   )
 }
-
 
 export default PropertyDetails

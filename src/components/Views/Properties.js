@@ -23,6 +23,7 @@ const PropertyContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    overflow: scroll;
 `
 
 const ContainerHeader = styled.div`
