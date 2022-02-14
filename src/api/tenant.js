@@ -20,8 +20,8 @@ export const getATenant = user => {
 }
 
 // Read all tenants (of a single user)
-export const getAllTenants = user => {
-    return axios.get(apiUrl + '/tenants/:id', {
+export const getAllTenants = (user, id) => {
+    return axios.get(apiUrl + `/tenants/${id}`, {
       headers: {
         Authorization: `Bearer ${user.token}`
       }

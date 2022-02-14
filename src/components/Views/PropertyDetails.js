@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import { Navigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import { getAProperty } from '../../api/properties'
+import { getAllTenants } from '../../api/tenant'
 
 const Container = styled.div`
   display: flex;
@@ -48,7 +49,7 @@ const LinkStyle = {
   "backgroundColor": "white", 
   'padding': "10px",
   height: "50%", 
-  "text-align": "center"
+  "textAlign": "center"
 }
 
 const ConfirmDeleteDiv = styled.div`
@@ -78,7 +79,14 @@ const ConfirmButtons = styled.button`
   cursor: pointer;
 `
 
-const NormalUI = ({ id, property, onDeleteClicked }) => {
+const TenantContainer = styled.div`
+  display: flex;
+  border: 1px solid black;
+  width: 100%;
+  justify-content: space-evenly;
+`
+
+const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
   return (
   <>
   <Header>
@@ -99,6 +107,7 @@ const NormalUI = ({ id, property, onDeleteClicked }) => {
   </InfoContainer>
   <InfoContainer>
     <p>Tenants</p>
+    {tenantJsx}
   </InfoContainer>
   </>
   )
@@ -116,9 +125,18 @@ const ConfirmDelete = ({ cancelDelete, confirmDelete }) => {
   )
 }
 
+const linkStyle = {
+  color: "black",
+  underline: "none", 
+  "textDecoration": "none",
+  "backgroundColor": "white", 
+  'padding': "12px"
+} 
+
 const PropertyDetails = ({ user }) => {
   const { id } = useParams()
   const [property, setProperty] = useState({})
+  const [tenants, setTenants] = useState([])
   const [deleteClicked, setDeleteClicked] = useState(false)
 
   useEffect(() => {
@@ -129,6 +147,16 @@ const PropertyDetails = ({ user }) => {
     }
 
     retrieveProperty(user, id)
+  }, [])
+
+  useEffect(() => {
+    const retrieveTenants = async (user, id) => {
+      let res = await getAllTenants(user, id)
+      let tenantResponse = res.data.tenants
+      console.log(tenantResponse)
+      setTenants(tenantResponse)
+    }
+    retrieveTenants(user, id)
   }, [])
 
   if (!user) {
@@ -147,9 +175,19 @@ const PropertyDetails = ({ user }) => {
     console.log('clicked')
   }
 
+  const tenantJsx = tenants.map((tenant, index) => (
+    <TenantContainer key={tenant._id}>
+        <h6>{index + 1}.</h6>
+        <h6>{tenant.firstName}</h6>
+        <h6>{tenant.lastName}</h6>
+        <h6>tenant info</h6>
+        <Link to="/" style={linkStyle}>•••</Link>
+    </TenantContainer>
+  ))
+
   return (
     <Container>
-      {deleteClicked ?  <ConfirmDelete cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} /> }
+      {deleteClicked ?  <ConfirmDelete cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} tenantJsx={tenantJsx}/> }
     </Container>
   )
 }
