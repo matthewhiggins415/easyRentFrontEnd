@@ -51,6 +51,33 @@ const LinkStyle = {
   "text-align": "center"
 }
 
+const ConfirmDeleteDiv = styled.div`
+  height: 400px;
+  width: 400px;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+`
+
+const ButtonConfirmContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+`
+
+const ConfirmButtons = styled.button`
+  width: 30%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+`
+
 const NormalUI = ({ id, property, onDeleteClicked }) => {
   return (
   <>
@@ -77,10 +104,17 @@ const NormalUI = ({ id, property, onDeleteClicked }) => {
   )
 }
 
-
-const confirmDelete = (
-  <p>Confirm Delete</p>
-)
+const ConfirmDelete = ({ cancelDelete, confirmDelete }) => {
+  return (
+    <ConfirmDeleteDiv>
+      <h3>Confirm Delete</h3>
+      <ButtonConfirmContainer>
+        <ConfirmButtons onClick={confirmDelete}>Yes</ConfirmButtons>
+        <ConfirmButtons onClick={cancelDelete}>No</ConfirmButtons>
+      </ButtonConfirmContainer>
+    </ConfirmDeleteDiv>
+  )
+}
 
 const PropertyDetails = ({ user }) => {
   const { id } = useParams()
@@ -103,12 +137,19 @@ const PropertyDetails = ({ user }) => {
 
   const onDeleteClicked = () => {
     setDeleteClicked(true)
+  }
+
+  const cancelDelete = () => {
+    setDeleteClicked(false)
+  }
+
+  const confirmDelete = () => {
     console.log('clicked')
   }
 
   return (
     <Container>
-      {deleteClicked ?  confirmDelete : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} /> }
+      {deleteClicked ?  <ConfirmDelete cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} /> }
     </Container>
   )
 }
