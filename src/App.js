@@ -12,6 +12,7 @@ import SideNavBar from './components/Header/SideNavBar'
 import Properties from './components/Views/Properties'
 import PropertyDetails from './components/Views/PropertyDetails'
 import PropertyEdit from './components/Views/PropertyEdit'
+import Tenants from "./components/Views/Tenants"
 
 const AppContainer = styled.div`
   display: flex;
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/properties" element={<Properties user={user}/>} exact/>
         <Route path="/property/:id" element={<PropertyDetails user={user}/>} exact/>
         <Route path="/editproperty/:id" element={<PropertyEdit user={user}/>} exact/>
+        <Route path="/tenants" element={<Tenants user={user} />} exact/>
       </Routes>
       </Container>
     </AppContainer>

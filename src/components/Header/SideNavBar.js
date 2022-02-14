@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const DIV = styled.div`
+  position: sticky;
   display: flex;
   height: auto;
   width: 14vw;

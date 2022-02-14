@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const DIV = styled.div`
+  position: sticky;
   width: 98vw;
   height: 10vh;
   padding: 10px;

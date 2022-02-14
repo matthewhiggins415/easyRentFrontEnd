@@ -19,13 +19,22 @@ export const getATenant = user => {
     })
 }
 
-// Read all tenants (of a single user)
+// Read all tenants (of a single prop)
 export const getAllTenants = (user, id) => {
     return axios.get(apiUrl + `/tenants/${id}`, {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
     })
+}
+
+//Get all tenants for a user 
+export const getUsersTenants = (user) => {
+  return axios.get(apiUrl + `/tenants`, {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
 }
 
 // Delete a tenant
