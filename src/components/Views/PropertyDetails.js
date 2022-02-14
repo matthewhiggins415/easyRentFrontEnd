@@ -51,6 +51,37 @@ const LinkStyle = {
   "text-align": "center"
 }
 
+const NormalUI = ({ id, property, onDeleteClicked }) => {
+  return (
+  <>
+  <Header>
+    <h1>Property Details</h1>
+    <ButtonContainer>
+      <Link style={LinkStyle} to={`/editproperty/${id}`}>edit</Link>
+      <Button onClick={onDeleteClicked}>❌</Button>
+    </ButtonContainer>
+  </Header>
+  <InfoContainer>
+    <p>{property.address}</p>
+    <p>Rents Due: {property.DayRentDue}</p>
+    <p>Units: {property.numOfUnits}</p>
+    <p>total Rent: {property.totalRent}</p>
+  </InfoContainer>
+  <InfoContainer>
+    <p>Tasks</p>
+  </InfoContainer>
+  <InfoContainer>
+    <p>Tenants</p>
+  </InfoContainer>
+  </>
+  )
+}
+
+
+const confirmDelete = (
+  <p>Confirm Delete</p>
+)
+
 const PropertyDetails = ({ user }) => {
   const { id } = useParams()
   const [property, setProperty] = useState({})
@@ -71,31 +102,13 @@ const PropertyDetails = ({ user }) => {
   }
 
   const onDeleteClicked = () => {
-    // setDeleteClicked(true)
+    setDeleteClicked(true)
     console.log('clicked')
   }
 
   return (
     <Container>
-      <Header>
-        <h1>Property Details</h1>
-        <ButtonContainer>
-          <Link style={LinkStyle} to={`/editproperty/${id}`}>edit</Link>
-          <Button onClick={onDeleteClicked}>❌</Button>
-        </ButtonContainer>
-      </Header>
-      <InfoContainer>
-        <p>{property.address}</p>
-        <p>Rents Due: {property.DayRentDue}</p>
-        <p>Units: {property.numOfUnits}</p>
-        <p>total Rent: {property.totalRent}</p>
-      </InfoContainer>
-      <InfoContainer>
-        <p>Tasks</p>
-      </InfoContainer>
-      <InfoContainer>
-        <p>Tenants</p>
-      </InfoContainer>
+      {deleteClicked ?  confirmDelete : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} /> }
     </Container>
   )
 }
