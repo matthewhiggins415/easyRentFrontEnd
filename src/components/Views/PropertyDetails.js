@@ -202,7 +202,7 @@ const PropertyDetails = ({ user }) => {
         <h6>{tenant.firstName}</h6>
         <h6>{tenant.lastName}</h6>
         <h6>tenant info</h6>
-        <Link to="/" style={linkStyle}>•••</Link>
+        <Link to={`/tenant/${tenant._id}`} style={linkStyle}>•••</Link>
     </TenantContainer>
   ))
 

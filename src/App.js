@@ -15,6 +15,7 @@ import PropertyEdit from './components/Views/PropertyEdit'
 import Tenants from "./components/Views/Tenants"
 import PropertyAdd from './components/Views/PropertyAdd'
 import TenantAdd from './components/Views/TenantAdd'
+import TenantDetails from './components/Views/TenantDetails'
 
 const AppContainer = styled.div`
   display: flex;
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/tenants" element={<Tenants user={user} />} exact/>
         <Route path="/propertyadd" element={<PropertyAdd user={user} />} exact/>
         <Route path="/tenantadd/:id" element={<TenantAdd user={user} />} exact/>
+        <Route path="/tenant/:id" element={<TenantDetails user={user} />} exact/>
       </Routes>
       </Container>
     </AppContainer>
