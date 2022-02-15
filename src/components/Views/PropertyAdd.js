@@ -24,9 +24,11 @@ const Form = styled.form`
   width: 90%;
   height: 90vh;
   display: flex;
+  margin: 0 auto;
   flex-direction: column; 
-  margin: auto;
-`
+  align-items: center;
+  justify-content: center;
+  `
 
 const Input = styled.input`
   width: 50%;
@@ -47,10 +49,29 @@ const Button = styled.button`
   cursor: pointer; 
 `
 
+const ZipContainer = styled.div`
+  width: 52%;
+  margin: 0 auto;
+  display: flex; 
+  justify-content: space-between;
+`
+
+const HalfInput = styled.input`
+  width: 40%;
+  padding: 10px;
+  margin: 5px auto;
+  background-color: white;
+  outline: none;
+  border: 1px solid black;
+`
+
 const PropertyAdd = ({ user }) => {
   const { id } = useParams()
 
   const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
+  const [zip, setZip] = useState()
   const [numOfUnits, setNumOfUnits] = useState()
   const [totalRent, setTotalRent] = useState()
   const [DayRentDue, setDayRentDue] = useState()
@@ -97,6 +118,11 @@ const PropertyAdd = ({ user }) => {
       </HeaderContainer>
       <Form onSubmit={onSubmit}>
         <Input onChange={(e) => setAddress(e.target.value)} value={address} name="address" type="text" placeholder="Street address"/>
+        <Input onChange={(e) => setCity(e.target.value)} value={city} name="city" type="text" placeholder="City"/>
+        <ZipContainer>
+          <HalfInput onChange={(e) => setState(e.target.value)} value={state} name="state" type="text" placeholder="State"/>
+          <HalfInput onChange={(e) => setZip(e.target.value)} value={zip} name="zip" type="number" placeholder="Zip Code"/>
+        </ZipContainer>
         <Input onChange={(e) => setNumOfUnits(e.target.value)} value={numOfUnits} name="numOfUnits" type="number" placeholder="Number of units"/>
         <Input onChange={(e) => setTotalRent(e.target.value)} value={totalRent} name="totalRent" type="number" placeholder="Total rent of building"/>
         <Input onChange={(e) => setDayRentDue(e.target.value)} value={DayRentDue} name="DayRentDue" type="number" placeholder="Day of month rent is due"/>
