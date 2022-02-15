@@ -2,8 +2,12 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 
 // Create a prop
-export const createAProperty = user => {
-    return axios.post(apiUrl + '/property/', {
+export const createAProperty = (user, propertyData) => {
+    return axios.post(apiUrl + '/property/', 
+    {
+      property: propertyData
+    }, 
+    {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
