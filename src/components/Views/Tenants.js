@@ -22,11 +22,6 @@ const TenantContainer = styled.div`
   border-radius: 10px;
 `
 
-const H1 = styled.h1`
-  width: 90%;
-  margin: 40px auto;
-`
-
 const linkStyle = {
     color: "black",
     underline: "none", 
@@ -60,8 +55,8 @@ const Tenants = ({ user }) => {
 
   return (
     <Container>
-        <H1>Tenants</H1>
-        { tenantJsx }
+      <h1>Tenants</h1>
+      { tenantJsx }
     </Container>
   )
 }

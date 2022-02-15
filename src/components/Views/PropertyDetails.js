@@ -27,6 +27,14 @@ const Button = styled.button`
   margin-right: 5px;
 `
 
+const HeaderContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+`
+
 const ButtonContainer = styled.div`
   display: flex;
 `
@@ -116,7 +124,10 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
     <h2>Tasks</h2>
   </InfoContainer>
   <TenantListContainer>
-    <h2>Tenants</h2>
+    <HeaderContainer>
+      <h2>Tenants</h2>
+      <Link style={linkStyle} to={`/tenantadd/${id}`}> ➕ </Link>
+    </HeaderContainer>
     {tenantJsx}
   </TenantListContainer>
   </>

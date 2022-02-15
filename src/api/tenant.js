@@ -2,8 +2,12 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 
 // Create a tenant
-export const createATenant = user => {
-    return axios.post(apiUrl + '/tenant/', {
+export const createATenant = ( user, tenant) => {
+    return axios.post(apiUrl + '/tenant/', 
+    {
+      tenant: tenant
+    },
+    {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
