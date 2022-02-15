@@ -92,7 +92,7 @@ const Properties = ({ user }) => {
       <Container>
         <ContainerHeader>
           <h1>Properties</h1>
-          <Button> ➕ </Button>
+          <Link style={linkStyle} to="/propertyadd"> ➕ </Link>
         </ContainerHeader>
         {propertyJsx}
       </Container>
