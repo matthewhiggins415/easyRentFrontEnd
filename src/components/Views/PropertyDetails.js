@@ -49,7 +49,9 @@ const Header = styled.div`
 
 const InfoContainer = styled.div`
   width: 90%;
-  height: 25%;
+  min-height: 25%;
+  height: auto;
+  margin: 20px auto;
 `
 
 const TenantListContainer = styled.div`
@@ -105,9 +107,15 @@ const TenantContainer = styled.div`
   border-radius: 10px;
 `
 
+const RentalDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
 const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
   return (
-  <>
+  <Container>
   <Header>
     <h1>Property Details</h1>
     <ButtonContainer>
@@ -117,12 +125,18 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
   </Header>
   <InfoContainer>
     <p>{property.address}</p>
-    <p>Rents Due: {property.DayRentDue}</p>
-    <p>Units: {property.numOfUnits}</p>
-    <p>total Rent: {property.totalRent}</p>
+    <p>{`${property.city}, ${property.state}  ${property.zip}`}</p>
+    <RentalDetailsContainer>
+      <p>Rents Due: {property.DayRentDue}</p>
+      <p>Units: {property.numOfUnits}</p>
+      <p>total Rent: ${property.totalRent}</p>
+    </RentalDetailsContainer>
   </InfoContainer>
   <InfoContainer>
-    <h2>Tasks</h2>
+    <HeaderContainer>
+      <h2>Tasks</h2>
+      <Link style={linkStyle} to={`/`}> ➕ </Link>
+    </HeaderContainer>
   </InfoContainer>
   <TenantListContainer>
     <HeaderContainer>
@@ -131,7 +145,7 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
     </HeaderContainer>
     {tenantJsx}
   </TenantListContainer>
-  </>
+  </Container>
   )
 }
 

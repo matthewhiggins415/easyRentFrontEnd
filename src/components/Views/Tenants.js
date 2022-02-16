@@ -4,22 +4,33 @@ import { getUsersTenants } from '../../api/tenant'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
+  background-color: pink;
   width: 90%;
   margin: 0 auto;
   height: auto; 
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 `
 
 const TenantContainer = styled.div`
-  margin: 6px auto;
-  display: flex;
-  border: 1px solid black;
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    padding: 0px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    overflow: scroll;
+`
+
+const ContainerHeader = styled.div`
   width: 90%;
-  justify-content: space-evenly;
+  margin: 0 auto; 
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 10px;
 `
 
 const linkStyle = {
@@ -55,7 +66,9 @@ const Tenants = ({ user }) => {
 
   return (
     <Container>
-      <h1>Tenants</h1>
+      <ContainerHeader>
+        <h1>Tenants</h1>
+      </ContainerHeader>
       { tenantJsx }
     </Container>
   )

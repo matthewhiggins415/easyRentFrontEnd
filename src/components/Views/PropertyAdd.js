@@ -87,6 +87,9 @@ const PropertyAdd = ({ user }) => {
     e.preventDefault()
     const property = { 
       address: address, 
+      city: city, 
+      state: state, 
+      zip: zip, 
       numOfUnits: numOfUnits, 
       totalRent: totalRent, 
       dayRentDue: dayRentDue
@@ -99,6 +102,9 @@ const PropertyAdd = ({ user }) => {
       setShouldNavigate(true)
     } catch(e) {
       setAddress('')
+      setCity('')
+      setState('')
+      setZip('')
       setNumOfUnits()
       setTotalRent()
       setDayRentDue()

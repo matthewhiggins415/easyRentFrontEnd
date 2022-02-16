@@ -24,7 +24,7 @@ const AppContainer = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%
+  width: 100%;
 `
 
 const App = () => {
