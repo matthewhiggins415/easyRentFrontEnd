@@ -121,7 +121,7 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
     <h1>Property Details</h1>
     <ButtonContainer>
       <Link style={LinkStyle} to={`/editproperty/${id}`}>edit</Link>
-      <Button onClick={onDeleteClicked}>❌</Button>
+      <Button onClick={onDeleteClicked}>delete</Button>
     </ButtonContainer>
   </Header>
   <InfoContainer>
