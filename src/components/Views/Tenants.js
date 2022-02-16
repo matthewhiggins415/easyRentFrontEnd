@@ -4,7 +4,6 @@ import { getUsersTenants } from '../../api/tenant'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
-  background-color: pink;
   width: 90%;
   margin: 0 auto;
   height: auto; 

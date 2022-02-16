@@ -5,7 +5,6 @@ import { getAProperty, editAProperty } from '../../api/properties'
 import styled from 'styled-components'
 import { Navigate } from 'react-router'
 
-
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -38,6 +37,7 @@ const Form = styled.form`
   align-items: center;
   justify-content: center;
 `
+
 const InputGroup = styled.div`
   width: 30%;
   margin: 0 auto;
@@ -83,9 +83,12 @@ const PropertyEdit = ({ user }) => {
     try {
       let formData = {
         address: property.address, 
+        city: property.city,
+        state: property.state, 
+        zip: property.zip, 
         numOfUnits: property.numOfUnits, 
         totalRent: property.totalRent, 
-        DayRentDue: property.DayRentDue
+        dayRentDue: property.dayRentDue
       }
 
       console.log(formData)
@@ -118,11 +121,38 @@ const PropertyEdit = ({ user }) => {
           />
         </InputGroup>
         <InputGroup>
+          <label>City:</label>
+          <Input 
+            placeholder={`${property.city}`} 
+            onChange={e => setProperty({...property, city: e.target.value})}
+            name="city"
+            required
+          />
+        </InputGroup>
+        <InputGroup>
+          <label>State:</label>
+          <Input 
+            placeholder={`${property.state}`} 
+            onChange={e => setProperty({...property, state: e.target.value})}
+            name="state"
+            required
+          />
+        </InputGroup>
+        <InputGroup>
+          <label>Zip Code:</label>
+          <Input 
+            placeholder={`${property.zip}`} 
+            onChange={e => setProperty({...property, zip: e.target.value})}
+            name="zip"
+            required
+          />
+        </InputGroup>
+        <InputGroup>
           <label>Rent Due:</label>
           <Input 
-            placeholder={`${property.DayRentDue}`} 
-            onChange={e => setProperty({...property, DayRentDue: e.target.value})}
-            name="DayRentDue"
+            placeholder={`${property.dayRentDue}`} 
+            onChange={e => setProperty({...property, dayRentDue: e.target.value})}
+            name="dayRentDue"
             required
           />
         </InputGroup>

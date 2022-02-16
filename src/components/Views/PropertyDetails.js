@@ -127,7 +127,7 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
     <p>{property.address}</p>
     <p>{`${property.city}, ${property.state}  ${property.zip}`}</p>
     <RentalDetailsContainer>
-      <p>Rents Due: {property.DayRentDue}</p>
+      <p>Rents Due: {property.dayRentDue}</p>
       <p>Units: {property.numOfUnits}</p>
       <p>total Rent: ${property.totalRent}</p>
     </RentalDetailsContainer>
