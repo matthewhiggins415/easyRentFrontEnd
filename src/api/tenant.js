@@ -15,8 +15,8 @@ export const createATenant = ( user, tenant) => {
 }
 
 // Read a tenant
-export const getATenant = user => {
-    return axios.get(apiUrl + '/tenant/:id', {
+export const getATenant = (user, id) => {
+    return axios.get(apiUrl + `/tenant/${id}`, {
       headers: {
         Authorization: `Bearer ${user.token}`
       }

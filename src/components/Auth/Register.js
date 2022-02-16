@@ -77,7 +77,7 @@ const Register = ({ setUser }) => {
 
   return (
     <DIV>
-      <h1>Register</h1>
+      <h1>Register as Landlord</h1>
       <FORM onSubmit={ onRegister }>
         <INPUT 
           placeholder="email" 

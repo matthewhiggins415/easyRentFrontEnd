@@ -59,7 +59,7 @@ const Login = ({ setUser }) => {
 
   return (
     <DIV>
-      <h1>Login</h1>
+      <h1>Login as Landlord</h1>
       <FORM onSubmit={onSignIn}>
         <INPUT 
           placeholder="email" 

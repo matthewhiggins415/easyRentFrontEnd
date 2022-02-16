@@ -102,7 +102,8 @@ const TenantContainer = styled.div`
   display: flex;
   border: 1px solid black;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding-left: 15px;
   align-items: center;
   border-radius: 10px;
 `
@@ -153,6 +154,8 @@ const ConfirmDelete = ({ cancelDelete, confirmDelete, user, propId }) => {
   return (
     <ConfirmDeleteDiv>
       <h3>Confirm Delete</h3>
+      <h3>💀</h3>
+      <p>All tenants belonging to this property will be deleted</p>
       <ButtonConfirmContainer>
         <ConfirmButtons onClick={() => confirmDelete(user, propId)}>Yes</ConfirmButtons>
         <ConfirmButtons onClick={() => cancelDelete()}>No</ConfirmButtons>
