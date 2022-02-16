@@ -99,7 +99,7 @@ const TenantAdd = ({ user }) => {
   return (
     <Container>
       <HeaderContainer>
-          <h1>Add Property</h1>
+          <h1>Add Tenant</h1>
           <button onClick={goBack}>❌</button>
       </HeaderContainer>
       <Form onSubmit={onSubmit}>

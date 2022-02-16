@@ -33,8 +33,8 @@ export const getAllProperties = (user) => {
 }
 
 // Delete a prop
-export const deleteAProperty = user => {
-    return axios.delete(apiUrl + '/property/:id', {
+export const deleteAProperty = (user, id) => {
+    return axios.delete(apiUrl + `/property/${id}`, {
       headers: {
         Authorization: `Bearer ${user.token}`
       }

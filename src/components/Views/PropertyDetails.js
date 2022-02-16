@@ -5,6 +5,7 @@ import { Navigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import { getAProperty } from '../../api/properties'
 import { getAllTenants } from '../../api/tenant'
+import { deleteAProperty } from '../../api/properties'
 
 const Container = styled.div`
   display: flex;
@@ -134,13 +135,13 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
   )
 }
 
-const ConfirmDelete = ({ cancelDelete, confirmDelete }) => {
+const ConfirmDelete = ({ cancelDelete, confirmDelete, user, propId }) => {
   return (
     <ConfirmDeleteDiv>
       <h3>Confirm Delete</h3>
       <ButtonConfirmContainer>
-        <ConfirmButtons onClick={confirmDelete}>Yes</ConfirmButtons>
-        <ConfirmButtons onClick={cancelDelete}>No</ConfirmButtons>
+        <ConfirmButtons onClick={() => confirmDelete(user, propId)}>Yes</ConfirmButtons>
+        <ConfirmButtons onClick={() => cancelDelete()}>No</ConfirmButtons>
       </ButtonConfirmContainer>
     </ConfirmDeleteDiv>
   )
@@ -156,9 +157,11 @@ const linkStyle = {
 
 const PropertyDetails = ({ user }) => {
   const { id } = useParams()
+
   const [property, setProperty] = useState({})
   const [tenants, setTenants] = useState([])
   const [deleteClicked, setDeleteClicked] = useState(false)
+  const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
     const retrieveProperty = async (user, id) => {
@@ -189,11 +192,20 @@ const PropertyDetails = ({ user }) => {
   }
 
   const cancelDelete = () => {
+    console.log(deleteClicked)
     setDeleteClicked(false)
+    console.log(deleteClicked)
   }
 
-  const confirmDelete = () => {
+  const confirmDelete = async (user, propId) => {
     console.log('clicked')
+    let res = await deleteAProperty(user, propId)
+    console.log(res)
+    setDeleted(true)
+  }
+
+  if (deleted) {
+    return <Navigate to="/properties" />
   }
 
   const tenantJsx = tenants.map((tenant, index) => (
@@ -208,7 +220,7 @@ const PropertyDetails = ({ user }) => {
 
   return (
     <Container>
-      {deleteClicked ?  <ConfirmDelete cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} tenantJsx={tenantJsx}/> }
+      {deleteClicked ?  <ConfirmDelete user={user} propId={id} cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} tenantJsx={tenantJsx}/> }
     </Container>
   )
 }

@@ -71,10 +71,10 @@ const PropertyAdd = ({ user }) => {
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
-  const [zip, setZip] = useState()
+  const [zip, setZip] = useState('')
   const [numOfUnits, setNumOfUnits] = useState()
   const [totalRent, setTotalRent] = useState()
-  const [DayRentDue, setDayRentDue] = useState()
+  const [dayRentDue, setDayRentDue] = useState()
   const [shouldNavigate, setShouldNavigate] = useState(false)
 
   const navigate = useNavigate();
@@ -89,7 +89,7 @@ const PropertyAdd = ({ user }) => {
       address: address, 
       numOfUnits: numOfUnits, 
       totalRent: totalRent, 
-      DayRentDue: DayRentDue
+      dayRentDue: dayRentDue
     }
     console.log(property)
 
@@ -121,11 +121,11 @@ const PropertyAdd = ({ user }) => {
         <Input onChange={(e) => setCity(e.target.value)} value={city} name="city" type="text" placeholder="City"/>
         <ZipContainer>
           <HalfInput onChange={(e) => setState(e.target.value)} value={state} name="state" type="text" placeholder="State"/>
-          <HalfInput onChange={(e) => setZip(e.target.value)} value={zip} name="zip" type="number" placeholder="Zip Code"/>
+          <HalfInput onChange={(e) => setZip(e.target.value)} value={zip} name="zip" type="text" placeholder="Zip Code"/>
         </ZipContainer>
         <Input onChange={(e) => setNumOfUnits(e.target.value)} value={numOfUnits} name="numOfUnits" type="number" placeholder="Number of units"/>
         <Input onChange={(e) => setTotalRent(e.target.value)} value={totalRent} name="totalRent" type="number" placeholder="Total rent of building"/>
-        <Input onChange={(e) => setDayRentDue(e.target.value)} value={DayRentDue} name="DayRentDue" type="number" placeholder="Day of month rent is due"/>
+        <Input onChange={(e) => setDayRentDue(e.target.value)} value={dayRentDue} name="dayRentDue" type="number" placeholder="Day of month rent is due"/>
         <Button type="submit">Submit</Button>
       </Form>
     </Container>   
