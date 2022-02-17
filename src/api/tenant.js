@@ -51,8 +51,12 @@ export const deleteATenant = user => {
 }
 
 // Edit a tenant 
-export const editATenant = user => {
-    return axios.patch(apiUrl + '/tenant/:id', {
+export const editATenant = (user, data, id) => {
+    return axios.patch(apiUrl + `/tenant/${id}`, 
+    {
+      tenant: data
+    }, 
+    {
       headers: {
         Authorization: `Bearer ${user.token}`
       }

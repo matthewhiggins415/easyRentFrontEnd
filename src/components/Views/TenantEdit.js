@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useParams } from 'react-router'
 import styled from 'styled-components'
-import { getATenant } from '../../api/tenant'
+import { getATenant, editATenant } from '../../api/tenant'
 
 const Container = styled.div`
   width: 100%;
@@ -77,7 +77,9 @@ const EditTenant = ({ user }) => {
           rentAmount: tenant.rentAmount
       }
 
-      console.log(formData)
+      const updateTenant = await editATenant(user, formData, id)
+      console.log(updateTenant)
+      setShouldNavigate(true)
     } catch(error) {
       console.error()
     }
