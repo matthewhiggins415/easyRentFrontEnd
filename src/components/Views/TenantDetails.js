@@ -31,6 +31,38 @@ const Button = styled.button`
   border-radius: 10px;
 `
 
+const StandardUI = ({ tenant, id, onEdit, onDelete}) => {
+  return (
+    <Container>
+      <ContainerHeader>
+        <h1>Tenant Details</h1>
+        <ButtonContainer>
+          <Button onClick={() => onEdit(id)}>edit</Button>
+          <Button onClick={() => onDelete()}>delete</Button>
+        </ButtonContainer>
+      </ContainerHeader>
+      <p>{tenant.firstName}</p> 
+      <p>{tenant.lastName}</p>
+      <p>{tenant.phone}</p>
+      <p>{tenant.rentAmount}</p>
+      <p>{tenant.rentDate}</p>
+    </Container>
+  )
+}
+
+const ConfirmDelete = ({ setShouldDelete }) => {
+  const handleClick = () => {
+    setShouldDelete(false)
+  } 
+
+  return (
+    <Container>
+      <p>Confirm Delete</p>
+      <button onClick={handleClick}>back</button>
+    </Container>
+  )
+}
+
 const TenantDetails = ({ user }) => {
   const [tenant, setTenant] = useState({})
   const [shouldEdit, setShouldEdit] = useState(false)
@@ -59,20 +91,13 @@ const TenantDetails = ({ user }) => {
   }
 
   if (shouldEdit) {
-    return <Navigate to={`/tenantEdit/${id}`}/>
+    return <Navigate to={`/tenantedit/${id}`}/>
   }
 
   return (
-    <Container>
-      <ContainerHeader>
-        <h1>Tenant Details</h1>
-        <ButtonContainer>
-          <Button onClick={() => onEdit(id)}>edit</Button>
-          <Button onClick={() => onDelete()}>delete</Button>
-        </ButtonContainer>
-      </ContainerHeader>
-      <p>{tenant.firstName}</p> 
-    </Container>
+    <>
+    { shouldDelete ? <ConfirmDelete setShouldDelete={setShouldDelete} /> : <StandardUI user={user} tenant={tenant} id={id} onEdit={onEdit} onDelete={onDelete}/> }
+    </>
   )
 }
 

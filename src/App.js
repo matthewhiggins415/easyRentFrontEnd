@@ -54,7 +54,7 @@ const App = () => {
         <Route path="/propertyadd" element={<PropertyAdd user={user} />} exact/>
         <Route path="/tenantadd/:id" element={<TenantAdd user={user} />} exact/>
         <Route path="/tenant/:id" element={<TenantDetails user={user} />} exact/>
-        <Route path="/tenantEdit/:id" element={<TenantEdit user={user} />} exact/>
+        <Route path="/tenantedit/:id" element={<TenantEdit user={user} />} exact/>
       </Routes>
       </Container>
     </AppContainer>
