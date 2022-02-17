@@ -10,6 +10,33 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 `
+
+const ConfirmDeleteContainer = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const TenantDetailsContainer = styled.div`
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+`
+
+const ConfirmDeleteBtn = styled.button`
+  border: 1px solid black;
+  background-color: white;
+  outline: none; 
+  width: 40%;
+  padding: 10px;
+  margin: 10px auto;
+`
+
 const ContainerHeader = styled.div`
   width: 90%; 
   margin: 0 auto; 
@@ -41,11 +68,13 @@ const StandardUI = ({ tenant, id, onEdit, onDelete}) => {
           <Button onClick={() => onDelete()}>delete</Button>
         </ButtonContainer>
       </ContainerHeader>
-      <p>{tenant.firstName}</p> 
-      <p>{tenant.lastName}</p>
-      <p>{tenant.phone}</p>
-      <p>{tenant.rentAmount}</p>
-      <p>{tenant.rentDate}</p>
+      <TenantDetailsContainer>
+        <p>{`${tenant.firstName} ${tenant.lastName}`}</p> 
+        <p>📪 {tenant.email}</p>
+        <p>📞 {tenant.phone}</p>
+        <p>Monthly Rent: ${tenant.rentAmount}</p>
+        <p>Rent Due: {tenant.rentDate}</p>
+      </TenantDetailsContainer>
     </Container>
   )
 }
@@ -56,10 +85,11 @@ const ConfirmDelete = ({ setShouldDelete }) => {
   } 
 
   return (
-    <Container>
-      <p>Confirm Delete</p>
-      <button onClick={handleClick}>back</button>
-    </Container>
+    <ConfirmDeleteContainer>
+      <h1>Confirm Delete</h1>
+      <ConfirmDeleteBtn onClick={handleClick}>Cancel</ConfirmDeleteBtn>
+      <ConfirmDeleteBtn>Confirm</ConfirmDeleteBtn>
+    </ConfirmDeleteContainer>
   )
 }
 
