@@ -12,6 +12,7 @@ const Container = styled.div`
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between; 
+  align-items: center;
   width: 90%;
   margin: 0 auto;
 `
@@ -29,6 +30,7 @@ const Form = styled.form`
 `
 
 const Input = styled.input`
+  width: 40%;
   padding: 10px;
   outline: none;
   border: 1px solid black;
@@ -37,11 +39,19 @@ const Input = styled.input`
 `
 
 const Button = styled.button`
+  width: 20%;
   margin: 5px auto;
   padding: 10px;
   border: 1px solid black;
   background-color: white;
   cursor: pointer;
+`
+
+const BackBtn = styled.button`
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  height: 50%;
 `
 
 const EditTenant = ({ user }) => {
@@ -93,7 +103,7 @@ const EditTenant = ({ user }) => {
     <Container>
       <HeaderContainer>
         <h1>Edit Tenant</h1>
-        <button onClick={() => handleClick()}>back</button>
+        <BackBtn onClick={() => handleClick()}>back</BackBtn>
       </HeaderContainer>
       <Form onSubmit={handleSubmit}>
           <Input 
@@ -106,36 +116,31 @@ const EditTenant = ({ user }) => {
             placeholder={`${tenant.lastName}`} 
             onChange={e => setTenant({...tenant, lastName: e.target.value})} 
             type="text" 
-            name="lastName" 
-            required 
+            name="lastName"  
           />
           <Input 
             placeholder={`${tenant.email}`} 
             onChange={e => setTenant({...tenant, email: e.target.value})} 
             type="email" 
-            name="email" 
-            required 
+            name="email"  
           />
           <Input 
             placeholder={`${tenant.phone}`} 
             onChange={e => setTenant({...tenant, phone: e.target.value})} 
             type="text" 
-            name="phone" 
-            required 
+            name="phone"  
           />
           <Input 
             placeholder={`${tenant.rentAmount}`} 
             onChange={e => setTenant({...tenant, rentAmount: e.target.value})} 
             type="number" 
-            name="rentAmount" 
-            required 
+            name="rentAmount"  
           />
           <Input 
             placeholder={`${tenant.rentDate}`} 
             onChange={e => setTenant({...tenant, rentDate: e.target.value})} 
             type="number" 
-            name="rentDate" 
-            required 
+            name="rentDate"  
           />
           <Button type="submit">Submit</Button>
       </Form>

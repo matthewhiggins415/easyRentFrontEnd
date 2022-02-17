@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router'
-import { getATenant } from '../../api/tenant'
+import { getATenant, deleteATenant } from '../../api/tenant'
 import { Navigate } from 'react-router'
 
 const Container = styled.div`
@@ -35,6 +35,7 @@ const ConfirmDeleteBtn = styled.button`
   width: 40%;
   padding: 10px;
   margin: 10px auto;
+  cursor: pointer;
 `
 
 const ContainerHeader = styled.div`
@@ -79,16 +80,26 @@ const StandardUI = ({ tenant, id, onEdit, onDelete}) => {
   )
 }
 
-const ConfirmDelete = ({ setShouldDelete }) => {
+const ConfirmDelete = ({ setShouldDelete, setIsDeleted, user, id }) => {
   const handleClick = () => {
     setShouldDelete(false)
   } 
+
+  const handleConfirm = async (user, id) => {
+    console.log('confirm clicked')
+    try {
+      await deleteATenant(user, id)
+      setIsDeleted(true)
+    } catch (error) {
+      console.error()
+    }
+  }
 
   return (
     <ConfirmDeleteContainer>
       <h1>Confirm Delete</h1>
       <ConfirmDeleteBtn onClick={handleClick}>Cancel</ConfirmDeleteBtn>
-      <ConfirmDeleteBtn>Confirm</ConfirmDeleteBtn>
+      <ConfirmDeleteBtn onClick={() => handleConfirm(user, id)}>Confirm</ConfirmDeleteBtn>
     </ConfirmDeleteContainer>
   )
 }
@@ -97,6 +108,7 @@ const TenantDetails = ({ user }) => {
   const [tenant, setTenant] = useState({})
   const [shouldEdit, setShouldEdit] = useState(false)
   const [shouldDelete, setShouldDelete] = useState(false)
+  const [isDeleted, setIsDeleted] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -124,9 +136,13 @@ const TenantDetails = ({ user }) => {
     return <Navigate to={`/tenantedit/${id}`}/>
   }
 
+  if (isDeleted) {
+    return <Navigate to={`/properties`}/>
+  }
+
   return (
     <>
-    { shouldDelete ? <ConfirmDelete setShouldDelete={setShouldDelete} /> : <StandardUI user={user} tenant={tenant} id={id} onEdit={onEdit} onDelete={onDelete}/> }
+    { shouldDelete ? <ConfirmDelete user={user} id={id} setIsDeleted={setIsDeleted} setShouldDelete={setShouldDelete} /> : <StandardUI user={user} tenant={tenant} id={id} onEdit={onEdit} onDelete={onDelete}/> }
     </>
   )
 }

@@ -117,7 +117,6 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.address}`} 
             onChange={e => setProperty({...property, address: e.target.value})}
             name="address"
-            required
           />
         </InputGroup>
         <InputGroup>
@@ -126,7 +125,6 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.city}`} 
             onChange={e => setProperty({...property, city: e.target.value})}
             name="city"
-            required
           />
         </InputGroup>
         <InputGroup>
@@ -135,7 +133,6 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.state}`} 
             onChange={e => setProperty({...property, state: e.target.value})}
             name="state"
-            required
           />
         </InputGroup>
         <InputGroup>
@@ -144,7 +141,6 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.zip}`} 
             onChange={e => setProperty({...property, zip: e.target.value})}
             name="zip"
-            required
           />
         </InputGroup>
         <InputGroup>
@@ -153,7 +149,6 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.dayRentDue}`} 
             onChange={e => setProperty({...property, dayRentDue: e.target.value})}
             name="dayRentDue"
-            required
           />
         </InputGroup>
         <InputGroup>
@@ -162,7 +157,6 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.numOfUnits}`} 
             onChange={e => setProperty({...property, numOfUnits: e.target.value})}
             name="numOfUnits"
-            required
           />
         </InputGroup>
         <InputGroup>
@@ -171,7 +165,6 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.totalRent}`} 
             onChange={e => setProperty({...property, totalRent: e.target.value})}
             name="totalRent"
-            required
           />
         </InputGroup>
         <SubmitBtn type="submit">Submit</SubmitBtn>

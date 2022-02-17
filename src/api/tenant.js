@@ -42,8 +42,8 @@ export const getUsersTenants = (user) => {
 }
 
 // Delete a tenant
-export const deleteATenant = user => {
-    return axios.delete(apiUrl + '/tenant/:id', {
+export const deleteATenant = (user, id) => {
+    return axios.delete(apiUrl + `/tenant/${id}`, {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
