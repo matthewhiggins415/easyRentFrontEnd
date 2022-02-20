@@ -114,7 +114,46 @@ const RentalDetailsContainer = styled.div`
   justify-content: space-between;
 `
 
+const TaskContainer = styled.div`
+  display: flex;
+  width: 100%; 
+  height: auto;
+  flex-direction: column;
+`
+
+const TaskForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: gray;
+  padding: 10px;
+`
+
+const TaskInput = styled.input`
+  padding: 10px;
+  outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 250px;
+`
+
+const TaskButton = styled.button`
+  padding: 10px; 
+  background-color: white; 
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+`
+
 const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
+  const [addTask, setAddTask] = useState(false)
+
+  const onAddTask = () => {
+    setAddTask(true)
+  }
+
   return (
   <Container>
   <Header>
@@ -137,8 +176,9 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
   <InfoContainer>
     <HeaderContainer>
       <h2>Tasks</h2>
-      <Link style={linkStyle} to={`/`}> ➕ </Link>
+      <Button onClick={() => onAddTask()}> ➕ </Button>
     </HeaderContainer>
+    {addTask ? <AddTask setAddTask={setAddTask}/> : ''}
   </InfoContainer>
   <TenantListContainer>
     <HeaderContainer>
@@ -162,6 +202,27 @@ const ConfirmDelete = ({ cancelDelete, confirmDelete, user, propId }) => {
         <ConfirmButtons onClick={() => cancelDelete()}>No</ConfirmButtons>
       </ButtonConfirmContainer>
     </ConfirmDeleteDiv>
+  )
+}
+
+const AddTask = ({ setAddTask }) => {
+  const onCancelTask = () => {
+    setAddTask(false)
+  }
+
+  return (
+    <TaskContainer>
+      <TaskForm>
+        <div>
+          <TaskInput type="text" placeholder="title" />
+          <TaskInput type="text" placeholder="description"/>
+        </div>
+        <div>
+          <TaskButton type="submit">submit</TaskButton>
+          <TaskButton type="submit" onClick={() => onCancelTask()}>cancel</TaskButton>
+        </div>
+      </TaskForm>
+    </TaskContainer>
   )
 }
 
