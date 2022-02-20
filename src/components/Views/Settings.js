@@ -3,7 +3,7 @@ import React from 'react'
 const Settings = ({ user }) => {
   return (
     <>
-      <h1>Hayo</h1>
+      <h1>Settings</h1>
     </>
   )
 }

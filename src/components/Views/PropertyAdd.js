@@ -75,6 +75,7 @@ const PropertyAdd = ({ user }) => {
   const [numOfUnits, setNumOfUnits] = useState()
   const [totalRent, setTotalRent] = useState()
   const [dayRentDue, setDayRentDue] = useState()
+  const [description, setDescription] = useState()
   const [shouldNavigate, setShouldNavigate] = useState(false)
 
   const navigate = useNavigate();
@@ -92,7 +93,8 @@ const PropertyAdd = ({ user }) => {
       zip: zip, 
       numOfUnits: numOfUnits, 
       totalRent: totalRent, 
-      dayRentDue: dayRentDue
+      dayRentDue: dayRentDue, 
+      description: description
     }
     console.log(property)
 
@@ -108,6 +110,7 @@ const PropertyAdd = ({ user }) => {
       setNumOfUnits()
       setTotalRent()
       setDayRentDue()
+      setDescription()
       console.log(e)
     }
   }
@@ -132,6 +135,7 @@ const PropertyAdd = ({ user }) => {
         <Input onChange={(e) => setNumOfUnits(e.target.value)} value={numOfUnits} name="numOfUnits" type="number" placeholder="Number of units"/>
         <Input onChange={(e) => setTotalRent(e.target.value)} value={totalRent} name="totalRent" type="number" placeholder="Total rent of building"/>
         <Input onChange={(e) => setDayRentDue(e.target.value)} value={dayRentDue} name="dayRentDue" type="number" placeholder="Day of month rent is due"/>
+        <Input onChange={(e) => setDescription(e.target.value)} value={description} name="description" type="textarea" placeholder="property description"/>
         <Button type="submit">Submit</Button>
       </Form>
     </Container>   

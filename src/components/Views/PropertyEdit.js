@@ -88,7 +88,8 @@ const PropertyEdit = ({ user }) => {
         zip: property.zip, 
         numOfUnits: property.numOfUnits, 
         totalRent: property.totalRent, 
-        dayRentDue: property.dayRentDue
+        dayRentDue: property.dayRentDue,
+        description: property.description
       }
 
       console.log(formData)
@@ -165,6 +166,15 @@ const PropertyEdit = ({ user }) => {
             placeholder={`${property.totalRent}`} 
             onChange={e => setProperty({...property, totalRent: e.target.value})}
             name="totalRent"
+          />
+        </InputGroup>
+        <InputGroup>
+          <label>Description:</label>
+          <Input 
+            placeholder={`${property.description}`} 
+            onChange={e => setProperty({...property, description: e.target.value})}
+            name="description"
+            type="textarea"
           />
         </InputGroup>
         <SubmitBtn type="submit">Submit</SubmitBtn>

@@ -132,6 +132,7 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
       <p>Units: {property.numOfUnits}</p>
       <p>total Rent: ${property.totalRent}</p>
     </RentalDetailsContainer>
+    <p>{property.description}</p>
   </InfoContainer>
   <InfoContainer>
     <HeaderContainer>
