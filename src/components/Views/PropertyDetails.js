@@ -115,7 +115,7 @@ const RentalDetailsContainer = styled.div`
 
 const TaskContainer = styled.div`
   display: flex;
-  width: 100%; 
+  width: auto; 
   height: auto;
   flex-direction: column;
 `
@@ -124,7 +124,8 @@ const TaskForm = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 98%;
+  margin: 0 auto;
   height: auto;
   background-color: gray;
   padding: 10px;
@@ -144,11 +145,21 @@ const TaskButton = styled.button`
   border: none;
   margin-left: 10px;
   margin-right: 10px;
+  cursor: pointer;
 `
 const TaskDiv = styled.div`
   display: flex;
   border: 1px solid black;
+  border-radius: 10px;
   align-items: center;
+  justify-content: space-between;
+  margin: 5px auto;
+  padding-left: 10px;
+  padding-right: 10px;
+`
+
+const TaskBtnContainer = styled.div`
+  display: flex;
   justify-content: space-between;
 `
 
@@ -341,8 +352,10 @@ const PropertyDetails = ({ user }) => {
       <h6>{task.taskTitle}</h6>
       <h6>{task.taskDescription}</h6>
       <h6>{task.complete}</h6>
-      <button >complete</button>
-      <button onClick={() => removeTask(task._id)}>delete</button>
+      <TaskBtnContainer>
+        <TaskButton >complete</TaskButton>
+        <TaskButton onClick={() => removeTask(task._id)}>delete</TaskButton>
+      </TaskBtnContainer>
     </TaskDiv>
   ))
 
