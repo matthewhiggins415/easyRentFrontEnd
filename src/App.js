@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/login" element={<Login setUser={setUser}/>} exact/>
         <Route path="/sign-out" element={<SignOut clearUser={clearUser} user={user}/>} exact/>
         <Route path="/home" element={<Home />} exact/>
-        <Route path="/profile" element={<Profile />} exact/>
+        <Route path="/profile" element={<Profile user={user} />} exact/>
         <Route path="/properties" element={<Properties user={user}/>} exact/>
         <Route path="/property/:id" element={<PropertyDetails user={user}/>} exact/>
         <Route path="/editproperty/:id" element={<PropertyEdit user={user}/>} exact/>
