@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { useParams } from 'react-router'
 import { Navigate } from 'react-router'
 import { Link } from 'react-router-dom'
-import { getAProperty } from '../../api/properties'
+import { getAProperty, deleteAProperty, addATask, deleteATask } from '../../api/properties'
 import { getAllTenants } from '../../api/tenant'
-import { deleteAProperty } from '../../api/properties'
 
 const Container = styled.div`
   display: flex;
@@ -146,8 +145,14 @@ const TaskButton = styled.button`
   margin-left: 10px;
   margin-right: 10px;
 `
+const TaskDiv = styled.div`
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+`
 
-const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
+const NormalUI = ({ id, property, onDeleteClicked, tenantJsx, taskJsx }) => {
   const [addTask, setAddTask] = useState(false)
 
   const onAddTask = () => {
@@ -179,6 +184,7 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx }) => {
       <Button onClick={() => onAddTask()}> ➕ </Button>
     </HeaderContainer>
     {addTask ? <AddTask setAddTask={setAddTask}/> : ''}
+    {taskJsx}
   </InfoContainer>
   <TenantListContainer>
     <HeaderContainer>
@@ -239,6 +245,7 @@ const PropertyDetails = ({ user }) => {
 
   const [property, setProperty] = useState({})
   const [tenants, setTenants] = useState([])
+  const [tasks, setTasks] = useState([])
   const [deleteClicked, setDeleteClicked] = useState(false)
   const [deleted, setDeleted] = useState(false)
 
@@ -246,7 +253,9 @@ const PropertyDetails = ({ user }) => {
     const retrieveProperty = async (user, id) => {
       let res = await getAProperty(user, id)
       let propertyData = res.data.property
+      let taskData = res.data.property.tasks
       setProperty(propertyData)
+      setTasks(taskData)
     }
 
     retrieveProperty(user, id)
@@ -297,9 +306,20 @@ const PropertyDetails = ({ user }) => {
     </TenantContainer>
   ))
 
+  const taskJsx = tasks.map((task, index) => (
+    <TaskDiv key={task._id}>
+      <h6>{index + 1}</h6>
+      <h6>{task.taskTitle}</h6>
+      <h6>{task.taskDescription}</h6>
+      <h6>{task.complete}</h6>
+      <button>complete</button>
+      <button>delete</button>
+    </TaskDiv>
+  ))
+
   return (
     <Container>
-      {deleteClicked ?  <ConfirmDelete user={user} propId={id} cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} tenantJsx={tenantJsx}/> }
+      {deleteClicked ?  <ConfirmDelete user={user} propId={id} cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} tenantJsx={tenantJsx} taskJsx={taskJsx}/> }
     </Container>
   )
 }
