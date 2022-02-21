@@ -69,7 +69,8 @@ export const addATask = (user, id, formData) => {
 
 //Delete a task 
 export const deleteATask = (user, id, taskId) => {
-  return axios.delete(apiUrl + `/propertytask/${id}/${taskId}`, {
+  return axios.delete(apiUrl + `/propertytask/${id}/${taskId}`, 
+  {
     headers: {
       Authorization: `Bearer ${user.token}`
     }

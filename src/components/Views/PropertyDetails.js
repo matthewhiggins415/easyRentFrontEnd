@@ -311,7 +311,13 @@ const PropertyDetails = ({ user }) => {
   const addTaskToProp = async (user, id, data) => {
     let res = await addATask(user, id, data)
     let updatedTasks = res.data.property.tasks
-    console.log(updatedTasks)
+   
+    setTasks(updatedTasks)
+  }
+
+  const removeTask = async (taskId) => {
+    let res = await deleteATask(user, id, taskId)
+    let updatedTasks = res.data.property.tasks
     setTasks(updatedTasks)
   }
 
@@ -335,8 +341,8 @@ const PropertyDetails = ({ user }) => {
       <h6>{task.taskTitle}</h6>
       <h6>{task.taskDescription}</h6>
       <h6>{task.complete}</h6>
-      <button>complete</button>
-      <button>delete</button>
+      <button >complete</button>
+      <button onClick={() => removeTask(task._id)}>delete</button>
     </TaskDiv>
   ))
 
