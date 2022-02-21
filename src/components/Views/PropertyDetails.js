@@ -152,7 +152,7 @@ const TaskDiv = styled.div`
   justify-content: space-between;
 `
 
-const NormalUI = ({ id, property, onDeleteClicked, tenantJsx, taskJsx }) => {
+const NormalUI = ({ user, id, property, onDeleteClicked, tenantJsx, taskJsx, addTaskToProp }) => {
   const [addTask, setAddTask] = useState(false)
 
   const onAddTask = () => {
@@ -183,7 +183,7 @@ const NormalUI = ({ id, property, onDeleteClicked, tenantJsx, taskJsx }) => {
       <h2>Tasks</h2>
       <Button onClick={() => onAddTask()}> ➕ </Button>
     </HeaderContainer>
-    {addTask ? <AddTask setAddTask={setAddTask}/> : ''}
+    {addTask ? <AddTask setAddTask={setAddTask} addTaskToProp={addTaskToProp} user={user} id={id}/> : ''}
     {taskJsx}
   </InfoContainer>
   <TenantListContainer>
@@ -211,17 +211,33 @@ const ConfirmDelete = ({ cancelDelete, confirmDelete, user, propId }) => {
   )
 }
 
-const AddTask = ({ setAddTask }) => {
+const AddTask = ({ setAddTask, addTaskToProp, user, id }) => {
+  const [taskTitle, setTaskTitle] = useState('')
+  const [taskDescription, setTaskDescription] = useState('')
+
+  const onSubmitTask = (e) => {
+    e.preventDefault()
+
+    let taskData = {
+      taskTitle: taskTitle, 
+      taskDescription: taskDescription
+    }
+
+    console.log(taskData)
+    addTaskToProp(user, id, taskData)
+    setAddTask(false)
+  }
+
   const onCancelTask = () => {
     setAddTask(false)
   }
 
   return (
     <TaskContainer>
-      <TaskForm>
+      <TaskForm onSubmit={onSubmitTask}>
         <div>
-          <TaskInput type="text" placeholder="title" />
-          <TaskInput type="text" placeholder="description"/>
+          <TaskInput type="text" onChange={(e) => setTaskTitle(e.target.value)} name="taskTitle" placeholder="title" />
+          <TaskInput type="text" onChange={(e) => setTaskDescription(e.target.value)} name="taskDescription" placeholder="description"/>
         </div>
         <div>
           <TaskButton type="submit">submit</TaskButton>
@@ -292,6 +308,13 @@ const PropertyDetails = ({ user }) => {
     setDeleted(true)
   }
 
+  const addTaskToProp = async (user, id, data) => {
+    let res = await addATask(user, id, data)
+    let updatedTasks = res.data.property.tasks
+    console.log(updatedTasks)
+    setTasks(updatedTasks)
+  }
+
   if (deleted) {
     return <Navigate to="/properties" />
   }
@@ -319,7 +342,7 @@ const PropertyDetails = ({ user }) => {
 
   return (
     <Container>
-      {deleteClicked ?  <ConfirmDelete user={user} propId={id} cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI id={id} property={property} onDeleteClicked={onDeleteClicked} tenantJsx={tenantJsx} taskJsx={taskJsx}/> }
+      {deleteClicked ?  <ConfirmDelete user={user} propId={id} cancelDelete={cancelDelete} confirmDelete={confirmDelete}/> : <NormalUI user={user} id={id} property={property} onDeleteClicked={onDeleteClicked} tenantJsx={tenantJsx} taskJsx={taskJsx} addTaskToProp={addTaskToProp} /> }
     </Container>
   )
 }

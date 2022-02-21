@@ -55,7 +55,7 @@ export const editAProperty = (user, id, formData) => {
 }
 
 //Create a task 
-export const addATask = ({ user, id, formData}) => {
+export const addATask = (user, id, formData) => {
   return axios.patch(apiUrl + `/propertytask/${id}`, {
     task: formData
   },
@@ -68,7 +68,7 @@ export const addATask = ({ user, id, formData}) => {
 
 
 //Delete a task 
-export const deleteATask = ({ user, id, taskId}) => {
+export const deleteATask = (user, id, taskId) => {
   return axios.delete(apiUrl + `/propertytask/${id}/${taskId}`, {
     headers: {
       Authorization: `Bearer ${user.token}`
@@ -77,7 +77,7 @@ export const deleteATask = ({ user, id, taskId}) => {
 }
 
 //Update a task 
-export const updateATask = ({ user, id, formData}) => {
+export const updateATask =  (user, id, formData) => {
   return axios.patch(apiUrl + `/propertytask/${id}`, {
     headers: {
       Authorization: `Bearer ${user.token}`
