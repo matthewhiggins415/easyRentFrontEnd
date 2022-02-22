@@ -21,7 +21,7 @@ export const signUp = (email, password, passwordConfirmation) => {
     })
   }
   
-  export const signOut = user => {
+  export const signOut = (user) => {
     return axios.delete(apiUrl + '/sign-out/', {
       headers: {
         Authorization: `Bearer ${user.token}`
@@ -45,3 +45,27 @@ export const signUp = (email, password, passwordConfirmation) => {
       }
     )
   }
+
+  // get a single landlord 
+  export const getUser = (user) => {
+    return axios.get(apiUrl + `/user/${user._id}`,  
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      }
+    )
+  }
+
+// Edit a landlord 
+export const editALandlord = (user, data, id) => {
+  return axios.patch(apiUrl + `/user/${id}`, 
+  {
+    landlord: data
+  }, 
+  {
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}

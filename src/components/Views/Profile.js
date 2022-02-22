@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { getUser } from '../../api/auth'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   width: 100%;
@@ -27,76 +29,34 @@ const ProfileBody = styled.div`
   margin: 0 auto;
 `
 
-const Button = styled.button`
-  background-color: white;
-  height: auto;
-  border: 1px solid black;
-  cursor: pointer; 
-  padding: 10px;
-`
-
-const ProfileFormContainer = styled.div`
-  display: flex;
-  flex-direction: column; 
-  width: 50%; 
-  margin: 0 auto; 
-  height: auto; 
-`
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-const Input = styled.input`
-  margin: 5px;
-  padding: 10px;
-`
-
-const ProfileForm = ({ user, setShowForm }) => {
-  return (
-    <ProfileContainer>
-      <ProfileHeader>
-        <h2>Edit Contact Info</h2>
-        <Button onClick={() => setShowForm(false)}>Cancel</Button>
-      </ProfileHeader>
-      <ProfileFormContainer>
-        <Form>
-          <Input placeholder={`first name`}/>
-          <Input placeholder={`last name`}/>
-          <Input placeholder={`${user.email}`}/>
-          <Input placeholder={`phone number`}/>
-          <Button>Submit</Button>
-        </Form>
-      </ProfileFormContainer>
-    </ProfileContainer>
-  )
-}
-
-const ProfileDetails = ({ user, setShowForm }) => {
-  return (
-    <ProfileContainer>
-      <ProfileHeader>
-        <h2>Landlord Contact Info</h2>
-        <Button onClick={() => setShowForm(true)}>Edit</Button>
-      </ProfileHeader>
-      <ProfileBody>
-        <p>Name: </p>
-        <p>Email: {user.email}</p>
-        <p>Phone: </p>
-        <p>Account created: {String(user.stripeAccountCreated)}</p>
-        <p>Account is active: {String(user.stripeAccountCreated)}</p>
-      </ProfileBody>
-    </ProfileContainer> 
-  )
-}
-
 const Profile = ({ user }) => {
-  const [showForm, setShowForm] = useState(false)
+  const [landlord, setLandlord] = useState({})
+
+  useEffect(() => {
+    const retrieveLandlord = async (user) => {
+      let res = await getUser(user)
+      console.log(res)
+      setLandlord(res.data.user)
+    }
+
+    retrieveLandlord(user)
+  }, [])
 
   return (
     <Container>
-      { showForm ? <ProfileForm setShowForm={setShowForm} user={user}/> : <ProfileDetails setShowForm={setShowForm} user={user}/> }
+      <ProfileContainer>
+        <ProfileHeader>
+          <h2>Landlord Contact Info</h2>
+          <Link to={`/profileEdit/${user._id}`}>Edit</Link>
+        </ProfileHeader>
+        <ProfileBody>
+          <p>Name: {landlord.firstName + ' ' + landlord.lastName}</p>
+          <p>Email: {landlord.email}</p>
+          <p>Phone: {landlord.phone}</p>
+          <p>Account created: {String(landlord.stripeAccountCreated)}</p>
+          <p>Account is active: {String(landlord.stripeAccountCreated)}</p>
+        </ProfileBody>
+      </ProfileContainer> 
     </Container>
   )
 }
