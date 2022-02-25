@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import ActivateAccount from '../../components/Setup/ActivateAccount'
-import ActivateAccountComplete from '../../components/Setup/ActivateAccountComplete'
-import CreateAccount from '../../components/Setup/CreateAccount'
-import CreateAccountComplete from '../../components/Setup/CreateAccountComplete'
 import { createAccount, createAccountLink, getStripeAccount } from '../../api/stripe'
+import Complete from '../../components/complete'
+import Incomplete from '../../components/incomplete'
+import notStarted from '../../components/notStarted'
 
 const Container = styled.div`
   height: auto;
