@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { createAccount, createAccountLink, getStripeAccount } from '../../api/stripe'
-import Complete from '../../components/complete'
-import Incomplete from '../../components/incomplete'
-import notStarted from '../../components/notStarted'
+import Complete from '../Setup/Complete'
+import Incomplete from '../Setup/Incomplete'
+import NotStarted from '../Setup/NotStarted'
 
 const Container = styled.div`
   height: auto;
@@ -19,13 +19,13 @@ const Setup = ({ user }) => {
   useEffect(() => {
     console.log(user)
 
-    const retrieveUsersStripeAccount = async (user) => {
-      let res = await getStripeAccount(user)
-      setStripeAccount(res.data)
-      console.log(res.data)
-    }
+    // const retrieveUsersStripeAccount = async (user) => {
+    //   let res = await getStripeAccount(user)
+    //   setStripeAccount(res.data)
+    //   console.log(res.data)
+    // }
 
-    retrieveUsersStripeAccount(user)
+    // retrieveUsersStripeAccount(user)
 
     // const createStripeAccount = async (user) => {
     //   let res = await createAccount(user)
@@ -41,11 +41,19 @@ const Setup = ({ user }) => {
     // creatAccountLink(user)
   }, [])
 
+  if (!user.stripeId) {
+    console.log('no stripe account: create a new one here.')
+  }
+
+  const handleBeginOnboarding = () => {
+    console.log('begin onboarding btn')
+  }
+
   return (
     <Container>
       <h1>We use Stripe so you can collect payments</h1>
       <p>You will need to fill out information to activate your account</p>
-      <button>Begin Onboarding</button>
+      <button onClick={handleBeginOnboarding}>Begin Onboarding</button>
     </Container>
   )
 }
