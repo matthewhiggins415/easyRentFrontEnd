@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/matthewhiggins415/easyRentFrontEnd/static/css/main.e6c13ad2.css",
-    "main.js": "/matthewhiggins415/easyRentFrontEnd/static/js/main.20dc68cf.js",
-    "static/js/787.786614e7.chunk.js": "/matthewhiggins415/easyRentFrontEnd/static/js/787.786614e7.chunk.js",
-    "index.html": "/matthewhiggins415/easyRentFrontEnd/index.html",
-    "main.e6c13ad2.css.map": "/matthewhiggins415/easyRentFrontEnd/static/css/main.e6c13ad2.css.map",
-    "main.20dc68cf.js.map": "/matthewhiggins415/easyRentFrontEnd/static/js/main.20dc68cf.js.map",
-    "787.786614e7.chunk.js.map": "/matthewhiggins415/easyRentFrontEnd/static/js/787.786614e7.chunk.js.map"
+    "main.css": "/easyRentFrontEnd/static/css/main.e6c13ad2.css",
+    "main.js": "/easyRentFrontEnd/static/js/main.a64c8f2d.js",
+    "static/js/787.786614e7.chunk.js": "/easyRentFrontEnd/static/js/787.786614e7.chunk.js",
+    "index.html": "/easyRentFrontEnd/index.html",
+    "main.e6c13ad2.css.map": "/easyRentFrontEnd/static/css/main.e6c13ad2.css.map",
+    "main.a64c8f2d.js.map": "/easyRentFrontEnd/static/js/main.a64c8f2d.js.map",
+    "787.786614e7.chunk.js.map": "/easyRentFrontEnd/static/js/787.786614e7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.20dc68cf.js"
+    "static/js/main.a64c8f2d.js"
   ]
 }
