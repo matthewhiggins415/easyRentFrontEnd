@@ -3,7 +3,7 @@ import apiUrl from '../apiConfig'
 
 // Create a prop
 export const createAProperty = (user, propertyData) => {
-    return axios.post(apiUrl + '/property/', 
+    return axios.post(apiUrl + '/property', 
     {
       property: propertyData
     }, 
@@ -25,7 +25,7 @@ export const getAProperty = (user, id) => {
 
 // Read all props (of a single user)
 export const getAllProperties = (user) => {
-    return axios.get(apiUrl + '/property/', {
+    return axios.get(apiUrl + '/property', {
       headers: {
         Authorization: `Bearer ${user.token}`
       }

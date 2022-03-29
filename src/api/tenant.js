@@ -3,7 +3,7 @@ import apiUrl from '../apiConfig'
 
 // Create a tenant
 export const createATenant = ( user, tenant) => {
-    return axios.post(apiUrl + '/tenant/', 
+    return axios.post(apiUrl + '/tenant', 
     {
       tenant: tenant
     },
