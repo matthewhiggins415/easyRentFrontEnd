@@ -29,7 +29,7 @@ I first outlined the features I wanted to implement, then I created wireframes r
 
 <img src="https://user-images.githubusercontent.com/67120920/160938849-281fa85e-d2f7-43dc-9b48-8cb4242dc097.png" style="width:450px; height: 450px; margin: 0 auto;">
 
-<img src="https://user-images.githubusercontent.com/67120920/160938861-98148985-8192-4cdd-9573-4eba9e53f22b.png" style="width:450px; height: 450px; margin: 0 auto;">
+<img src="https://user-images.githubusercontent.com/67120920/160938861-98148985-8192-4cdd-9573-4eba9e53f22b.png" style="width:450px; object-fit: contain; height: 450px; margin: 0 auto;">
 
 
 ### Future Goals: 
