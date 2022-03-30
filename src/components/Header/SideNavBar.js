@@ -36,10 +36,6 @@ const SideNavBar = () => {
         <Link style={linkStyle} to="/profile">Profile</Link>
         <Link style={linkStyle} to="/properties">Properties</Link>
         <Link style={linkStyle} to="/tenants">Tenants</Link>
-        <Link style={linkStyle} to="/payments">Payments</Link>
-        <Link style={linkStyle} to="/setup">Setup</Link>
-        <Link style={linkStyle} to="/settings">Settings</Link>
-        <Link style={linkStyle} to="/documents">Documents</Link>
       </LinkContainer>
     </DIV>
   )
