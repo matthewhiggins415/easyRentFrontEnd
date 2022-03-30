@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
-  production: 'https://git.heroku.com/cryptic-scrubland-09574.git',
-  development: 'http://localhost:4741'
+  production: 'https://cryptic-scrubland-09574.herokuapp.com',
+  development: 'http://localhost:2020'
 }
 
 if (window.location.hostname === 'localhost') {
