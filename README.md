@@ -21,11 +21,9 @@ I first outlined the features I wanted to implement, then I created wireframes r
 
 <img src="https://user-images.githubusercontent.com/67120920/160937136-186bbff6-1f6c-4928-b8f8-7aa8c0f50870.jpg" alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
 
+<img src="https://user-images.githubusercontent.com/67120920/160937233-78832a58-82f7-46b4-9ed0-c0cc1bd84073.jpg" alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
 
-<img alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
-
-<img alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
-
+<img src="https://user-images.githubusercontent.com/67120920/160937241-56fcec06-32be-4c32-a0ce-61c6186d9a42.jpg" alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
 
 ### Future Goals: 
 1. Improve UI/UX - I want to implement framer-motion for page transitions and micro animations. There is a lot of room for improving the CSS. 
