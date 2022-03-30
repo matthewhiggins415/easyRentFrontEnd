@@ -19,7 +19,8 @@ This project was inspired by a recent move from Oahu to Denver. In that move I n
 ### Planning: 
 I first outlined the features I wanted to implement, then I created wireframes reflecting those features for each view. 
 
-<img alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
+<img src="https://user-images.githubusercontent.com/67120920/160937136-186bbff6-1f6c-4928-b8f8-7aa8c0f50870.jpg" alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
+
 
 <img alt="wireframe" style="width:450px; height: 450px; margin: 0 auto;">
 
