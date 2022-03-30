@@ -46,15 +46,13 @@ const Profile = ({ user }) => {
     <Container>
       <ProfileContainer>
         <ProfileHeader>
-          <h2>Landlord Contact Info</h2>
+          <h1>Profile</h1>
           <Link to={`/profileEdit/${user._id}`}>Edit</Link>
         </ProfileHeader>
         <ProfileBody>
           <p>Name: {landlord.firstName + ' ' + landlord.lastName}</p>
           <p>Email: {landlord.email}</p>
           <p>Phone: {landlord.phone}</p>
-          <p>Account created: {String(landlord.stripeAccountCreated)}</p>
-          <p>Account is active: {String(landlord.stripeAccountCreated)}</p>
         </ProfileBody>
       </ProfileContainer> 
     </Container>

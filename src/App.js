@@ -44,11 +44,11 @@ const App = () => {
       <Container>
       { user ? <SideNavBar /> : ''}
       <Routes>
-        <Route path="/" element={<Landing />} exact/>
+        <Route path="/easyRentFrontEnd" element={<Landing />} exact/>
         <Route path="/register" element={<Register setUser={setUser} />} exact/>
         <Route path="/login" element={<Login setUser={setUser}/>} exact/>
         <Route path="/sign-out" element={<SignOut clearUser={clearUser} user={user}/>} exact/>
-        <Route path="/home" element={<Home />} exact/>
+        <Route path="/home" element={<Home user={user}/>} exact/>
         <Route path="/profile" element={<Profile user={user} />} exact/>
         <Route path="/profileEdit/:id" element={<ProfileEdit user={user} />} exact/>
         <Route path="/properties" element={<Properties user={user}/>} exact/>

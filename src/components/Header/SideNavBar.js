@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const DIV = styled.div`
   position: sticky;
   display: flex;
-  height: auto;
+  height: 90vh;
   width: 14vw;
   border-right: 1px solid black;
   flex-direction: column;
